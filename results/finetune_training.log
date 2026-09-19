@@ -1,0 +1,414 @@
+WARNING: feature_extractor_cqt requires the libray 'nnAudio'
+Epoch 1 training: 256/820 recordings, mean loss 1.99983
+Epoch 1 training: 512/820 recordings, mean loss 1.96762
+Epoch 1 training: 768/820 recordings, mean loss 1.92946
+Epoch 1 training: 820/820 recordings, mean loss 1.92878
+dataset_A epoch 1 internal holdout: 50/206 recordings
+dataset_A epoch 1 internal holdout: 100/206 recordings
+dataset_A epoch 1 internal holdout: 150/206 recordings
+dataset_A epoch 1 internal holdout: 200/206 recordings
+dataset_A epoch 1 internal holdout: 206/206 recordings
+{"dataset": "dataset_A", "phase": "selection", "train_loss": 1.9287834690838326, "train_crop_top1": 0.1926829268292683, "train_samples": 820, "optimizer_steps": 52, "epoch": 1, "holdout_top1": 0.21844660194174756, "holdout_top3": 0.5533980582524272, "selection_score": 0.49514563106796117, "elapsed_seconds": 158.17506539600436}
+Epoch 2 training: 256/820 recordings, mean loss 1.76848
+Epoch 2 training: 512/820 recordings, mean loss 1.77862
+Epoch 2 training: 768/820 recordings, mean loss 1.75042
+Epoch 2 training: 820/820 recordings, mean loss 1.74589
+dataset_A epoch 2 internal holdout: 50/206 recordings
+dataset_A epoch 2 internal holdout: 100/206 recordings
+dataset_A epoch 2 internal holdout: 150/206 recordings
+dataset_A epoch 2 internal holdout: 200/206 recordings
+dataset_A epoch 2 internal holdout: 206/206 recordings
+{"dataset": "dataset_A", "phase": "selection", "train_loss": 1.745890829039783, "train_crop_top1": 0.2634146341463415, "train_samples": 820, "optimizer_steps": 52, "epoch": 2, "holdout_top1": 0.22815533980582525, "holdout_top3": 0.5097087378640777, "selection_score": 0.4830097087378641, "elapsed_seconds": 133.17907888698392}
+Epoch 3 training: 256/820 recordings, mean loss 1.87617
+Epoch 3 training: 512/820 recordings, mean loss 1.77668
+Epoch 3 training: 768/820 recordings, mean loss 1.70796
+Epoch 3 training: 820/820 recordings, mean loss 1.71480
+dataset_A epoch 3 internal holdout: 50/206 recordings
+dataset_A epoch 3 internal holdout: 100/206 recordings
+dataset_A epoch 3 internal holdout: 150/206 recordings
+dataset_A epoch 3 internal holdout: 200/206 recordings
+dataset_A epoch 3 internal holdout: 206/206 recordings
+{"dataset": "dataset_A", "phase": "selection", "train_loss": 1.714798166112202, "train_crop_top1": 0.2780487804878049, "train_samples": 820, "optimizer_steps": 52, "epoch": 3, "holdout_top1": 0.3300970873786408, "holdout_top3": 0.6796116504854369, "selection_score": 0.6699029126213593, "elapsed_seconds": 132.86806047498249}
+Epoch 4 training: 256/820 recordings, mean loss 1.66181
+Epoch 4 training: 512/820 recordings, mean loss 1.65843
+Epoch 4 training: 768/820 recordings, mean loss 1.65488
+Epoch 4 training: 820/820 recordings, mean loss 1.65533
+dataset_A epoch 4 internal holdout: 50/206 recordings
+dataset_A epoch 4 internal holdout: 100/206 recordings
+dataset_A epoch 4 internal holdout: 150/206 recordings
+dataset_A epoch 4 internal holdout: 200/206 recordings
+dataset_A epoch 4 internal holdout: 206/206 recordings
+{"dataset": "dataset_A", "phase": "selection", "train_loss": 1.6553300866266576, "train_crop_top1": 0.3182926829268293, "train_samples": 820, "optimizer_steps": 52, "epoch": 4, "holdout_top1": 0.3640776699029126, "holdout_top3": 0.7233009708737864, "selection_score": 0.7257281553398058, "elapsed_seconds": 132.93968255992513}
+Epoch 5 training: 256/820 recordings, mean loss 1.46205
+Epoch 5 training: 512/820 recordings, mean loss 1.56807
+Epoch 5 training: 768/820 recordings, mean loss 1.55044
+Epoch 5 training: 820/820 recordings, mean loss 1.55253
+dataset_A epoch 5 internal holdout: 50/206 recordings
+dataset_A epoch 5 internal holdout: 100/206 recordings
+dataset_A epoch 5 internal holdout: 150/206 recordings
+dataset_A epoch 5 internal holdout: 200/206 recordings
+dataset_A epoch 5 internal holdout: 206/206 recordings
+{"dataset": "dataset_A", "phase": "selection", "train_loss": 1.5525298839662134, "train_crop_top1": 0.35365853658536583, "train_samples": 820, "optimizer_steps": 52, "epoch": 5, "holdout_top1": 0.3737864077669903, "holdout_top3": 0.6990291262135923, "selection_score": 0.7233009708737864, "elapsed_seconds": 135.70412651798688}
+Epoch 6 training: 256/820 recordings, mean loss 1.42317
+Epoch 6 training: 512/820 recordings, mean loss 1.42079
+Epoch 6 training: 768/820 recordings, mean loss 1.45303
+Epoch 6 training: 820/820 recordings, mean loss 1.46721
+dataset_A epoch 6 internal holdout: 50/206 recordings
+dataset_A epoch 6 internal holdout: 100/206 recordings
+dataset_A epoch 6 internal holdout: 150/206 recordings
+dataset_A epoch 6 internal holdout: 200/206 recordings
+dataset_A epoch 6 internal holdout: 206/206 recordings
+{"dataset": "dataset_A", "phase": "selection", "train_loss": 1.467206215567705, "train_crop_top1": 0.41585365853658535, "train_samples": 820, "optimizer_steps": 52, "epoch": 6, "holdout_top1": 0.39805825242718446, "holdout_top3": 0.7815533980582524, "selection_score": 0.7888349514563107, "elapsed_seconds": 133.10259312507696}
+{"dataset": "dataset_A", "selected": {"name": "MERT last-four-block fine-tuning, 6 epochs", "epochs": 6, "selection_score": 0.7888349514563107, "holdout_top1": 0.39805825242718446, "holdout_top3": 0.7815533980582524}}
+WARNING: feature_extractor_cqt requires the libray 'nnAudio'
+Epoch 1 training: 256/1026 recordings, mean loss 1.96151
+Epoch 1 training: 512/1026 recordings, mean loss 2.04202
+Epoch 1 training: 768/1026 recordings, mean loss 2.01971
+Epoch 1 training: 1024/1026 recordings, mean loss 1.96248
+Epoch 1 training: 1026/1026 recordings, mean loss 1.96257
+{"dataset": "dataset_A", "phase": "final", "train_loss": 1.962571810560617, "train_crop_top1": 0.20955165692007796, "train_samples": 1026, "optimizer_steps": 65, "epoch": 1, "elapsed_seconds": 85.71014616405591}
+Epoch 2 training: 256/1026 recordings, mean loss 1.75486
+Epoch 2 training: 512/1026 recordings, mean loss 1.76811
+Epoch 2 training: 768/1026 recordings, mean loss 1.76204
+Epoch 2 training: 1024/1026 recordings, mean loss 1.73413
+Epoch 2 training: 1026/1026 recordings, mean loss 1.73391
+{"dataset": "dataset_A", "phase": "final", "train_loss": 1.7339089190983168, "train_crop_top1": 0.26705653021442494, "train_samples": 1026, "optimizer_steps": 65, "epoch": 2, "elapsed_seconds": 85.77748217107728}
+Epoch 3 training: 256/1026 recordings, mean loss 1.61432
+Epoch 3 training: 512/1026 recordings, mean loss 1.60330
+Epoch 3 training: 768/1026 recordings, mean loss 1.62484
+Epoch 3 training: 1024/1026 recordings, mean loss 1.66379
+Epoch 3 training: 1026/1026 recordings, mean loss 1.66405
+{"dataset": "dataset_A", "phase": "final", "train_loss": 1.6640476134785436, "train_crop_top1": 0.32456140350877194, "train_samples": 1026, "optimizer_steps": 65, "epoch": 3, "elapsed_seconds": 86.56207413901575}
+Epoch 4 training: 256/1026 recordings, mean loss 1.57915
+Epoch 4 training: 512/1026 recordings, mean loss 1.61904
+Epoch 4 training: 768/1026 recordings, mean loss 1.60434
+Epoch 4 training: 1024/1026 recordings, mean loss 1.60459
+Epoch 4 training: 1026/1026 recordings, mean loss 1.60553
+{"dataset": "dataset_A", "phase": "final", "train_loss": 1.6055328028011508, "train_crop_top1": 0.31968810916179335, "train_samples": 1026, "optimizer_steps": 65, "epoch": 4, "elapsed_seconds": 87.3235405710293}
+Epoch 5 training: 256/1026 recordings, mean loss 1.41371
+Epoch 5 training: 512/1026 recordings, mean loss 1.46398
+Epoch 5 training: 768/1026 recordings, mean loss 1.50007
+Epoch 5 training: 1024/1026 recordings, mean loss 1.50043
+Epoch 5 training: 1026/1026 recordings, mean loss 1.50020
+{"dataset": "dataset_A", "phase": "final", "train_loss": 1.5001976276234112, "train_crop_top1": 0.39766081871345027, "train_samples": 1026, "optimizer_steps": 65, "epoch": 5, "elapsed_seconds": 87.08810458006337}
+Epoch 6 training: 256/1026 recordings, mean loss 1.34345
+Epoch 6 training: 512/1026 recordings, mean loss 1.41392
+Epoch 6 training: 768/1026 recordings, mean loss 1.47028
+Epoch 6 training: 1024/1026 recordings, mean loss 1.48138
+Epoch 6 training: 1026/1026 recordings, mean loss 1.48404
+{"dataset": "dataset_A", "phase": "final", "train_loss": 1.4840417166202389, "train_crop_top1": 0.3996101364522417, "train_samples": 1026, "optimizer_steps": 65, "epoch": 6, "elapsed_seconds": 89.43742746300995}
+dataset_A official validation: 50/132 recordings
+dataset_A official validation: 100/132 recordings
+dataset_A official validation: 132/132 recordings
+dataset_A test: 50/132 recordings
+dataset_A test: 100/132 recordings
+dataset_A test: 132/132 recordings
+WARNING: feature_extractor_cqt requires the libray 'nnAudio'
+Epoch 1 training: 256/638 recordings, mean loss 1.98291
+Epoch 1 training: 512/638 recordings, mean loss 1.99591
+Epoch 1 training: 638/638 recordings, mean loss 1.95831
+dataset_B epoch 1 internal holdout: 50/160 recordings
+dataset_B epoch 1 internal holdout: 100/160 recordings
+dataset_B epoch 1 internal holdout: 150/160 recordings
+dataset_B epoch 1 internal holdout: 160/160 recordings
+{"dataset": "dataset_B", "phase": "selection", "train_loss": 1.9583115256318477, "train_crop_top1": 0.18025078369905956, "train_samples": 638, "optimizer_steps": 40, "epoch": 1, "holdout_top1": 0.175, "holdout_top3": 0.49375, "selection_score": 0.421875, "elapsed_seconds": 123.60790721594822}
+Epoch 2 training: 256/638 recordings, mean loss 1.82596
+Epoch 2 training: 512/638 recordings, mean loss 1.83909
+Epoch 2 training: 638/638 recordings, mean loss 1.82616
+dataset_B epoch 2 internal holdout: 50/160 recordings
+dataset_B epoch 2 internal holdout: 100/160 recordings
+dataset_B epoch 2 internal holdout: 150/160 recordings
+dataset_B epoch 2 internal holdout: 160/160 recordings
+{"dataset": "dataset_B", "phase": "selection", "train_loss": 1.8261563691973313, "train_crop_top1": 0.22100313479623823, "train_samples": 638, "optimizer_steps": 40, "epoch": 2, "holdout_top1": 0.175, "holdout_top3": 0.55, "selection_score": 0.45, "elapsed_seconds": 103.71408491092734}
+Epoch 3 training: 256/638 recordings, mean loss 1.76843
+Epoch 3 training: 512/638 recordings, mean loss 1.76671
+Epoch 3 training: 638/638 recordings, mean loss 1.76875
+dataset_B epoch 3 internal holdout: 50/160 recordings
+dataset_B epoch 3 internal holdout: 100/160 recordings
+dataset_B epoch 3 internal holdout: 150/160 recordings
+dataset_B epoch 3 internal holdout: 160/160 recordings
+{"dataset": "dataset_B", "phase": "selection", "train_loss": 1.7687518208004465, "train_crop_top1": 0.23824451410658307, "train_samples": 638, "optimizer_steps": 40, "epoch": 3, "holdout_top1": 0.26875, "holdout_top3": 0.60625, "selection_score": 0.5718749999999999, "elapsed_seconds": 112.3678395919269}
+Epoch 4 training: 256/638 recordings, mean loss 1.74194
+Epoch 4 training: 512/638 recordings, mean loss 1.71582
+Epoch 4 training: 638/638 recordings, mean loss 1.71173
+dataset_B epoch 4 internal holdout: 50/160 recordings
+dataset_B epoch 4 internal holdout: 100/160 recordings
+dataset_B epoch 4 internal holdout: 150/160 recordings
+dataset_B epoch 4 internal holdout: 160/160 recordings
+{"dataset": "dataset_B", "phase": "selection", "train_loss": 1.7117299495445897, "train_crop_top1": 0.27899686520376177, "train_samples": 638, "optimizer_steps": 40, "epoch": 4, "holdout_top1": 0.2, "holdout_top3": 0.575, "selection_score": 0.4875, "elapsed_seconds": 112.35051348793786}
+Epoch 5 training: 256/638 recordings, mean loss 1.64367
+Epoch 5 training: 512/638 recordings, mean loss 1.64594
+Epoch 5 training: 638/638 recordings, mean loss 1.68801
+dataset_B epoch 5 internal holdout: 50/160 recordings
+dataset_B epoch 5 internal holdout: 100/160 recordings
+dataset_B epoch 5 internal holdout: 150/160 recordings
+dataset_B epoch 5 internal holdout: 160/160 recordings
+{"dataset": "dataset_B", "phase": "selection", "train_loss": 1.6880078965967351, "train_crop_top1": 0.3166144200626959, "train_samples": 638, "optimizer_steps": 40, "epoch": 5, "holdout_top1": 0.23125, "holdout_top3": 0.60625, "selection_score": 0.534375, "elapsed_seconds": 109.66484435403254}
+Epoch 6 training: 256/638 recordings, mean loss 1.58284
+Epoch 6 training: 512/638 recordings, mean loss 1.59895
+Epoch 6 training: 638/638 recordings, mean loss 1.61188
+dataset_B epoch 6 internal holdout: 50/160 recordings
+dataset_B epoch 6 internal holdout: 100/160 recordings
+dataset_B epoch 6 internal holdout: 150/160 recordings
+dataset_B epoch 6 internal holdout: 160/160 recordings
+{"dataset": "dataset_B", "phase": "selection", "train_loss": 1.6118813921291626, "train_crop_top1": 0.34796238244514105, "train_samples": 638, "optimizer_steps": 40, "epoch": 6, "holdout_top1": 0.2375, "holdout_top3": 0.64375, "selection_score": 0.559375, "elapsed_seconds": 110.2103136110818}
+{"dataset": "dataset_B", "selected": {"name": "MERT last-four-block fine-tuning, 3 epochs", "epochs": 3, "selection_score": 0.5718749999999999, "holdout_top1": 0.26875, "holdout_top3": 0.60625}}
+WARNING: feature_extractor_cqt requires the libray 'nnAudio'
+Epoch 1 training: 256/798 recordings, mean loss 2.06080
+Epoch 1 training: 512/798 recordings, mean loss 1.97345
+Epoch 1 training: 768/798 recordings, mean loss 1.94410
+Epoch 1 training: 798/798 recordings, mean loss 1.95277
+{"dataset": "dataset_B", "phase": "final", "train_loss": 1.9527735775873476, "train_crop_top1": 0.15914786967418545, "train_samples": 798, "optimizer_steps": 50, "epoch": 1, "elapsed_seconds": 72.70298975799233}
+Epoch 2 training: 256/798 recordings, mean loss 1.94992
+Epoch 2 training: 512/798 recordings, mean loss 1.92646
+Epoch 2 training: 768/798 recordings, mean loss 1.90670
+Epoch 2 training: 798/798 recordings, mean loss 1.89786
+{"dataset": "dataset_B", "phase": "final", "train_loss": 1.8978634980089384, "train_crop_top1": 0.18796992481203006, "train_samples": 798, "optimizer_steps": 50, "epoch": 2, "elapsed_seconds": 67.39111066702753}
+Epoch 3 training: 256/798 recordings, mean loss 1.77394
+Epoch 3 training: 512/798 recordings, mean loss 1.74758
+Epoch 3 training: 768/798 recordings, mean loss 1.77004
+Epoch 3 training: 798/798 recordings, mean loss 1.77501
+{"dataset": "dataset_B", "phase": "final", "train_loss": 1.7750099117594553, "train_crop_top1": 0.21804511278195488, "train_samples": 798, "optimizer_steps": 50, "epoch": 3, "elapsed_seconds": 67.63438413396943}
+dataset_B official validation: 50/102 recordings
+dataset_B official validation: 100/102 recordings
+dataset_B official validation: 102/102 recordings
+dataset_B test: 50/102 recordings
+dataset_B test: 100/102 recordings
+dataset_B test: 102/102 recordings
+Fine-tuned checkpoints, metrics, and test predictions saved.
+WARNING: feature_extractor_cqt requires the libray 'nnAudio'
+dataset_A 1/132 A_0072adbc81aa
+dataset_A 2/132 A_041176d547e3
+dataset_A 3/132 A_0dceaddf7e55
+dataset_A 4/132 A_0f9b5201921e
+dataset_A 5/132 A_10343882ee72
+dataset_A 6/132 A_10621b810a11
+dataset_A 7/132 A_11e312c2f947
+dataset_A 8/132 A_12287f4a71a9
+dataset_A 9/132 A_13398deae508
+dataset_A 10/132 A_19a8f333493b
+dataset_A 11/132 A_1b02155b8633
+dataset_A 12/132 A_1df8afadc3dc
+dataset_A 13/132 A_241a67513df1
+dataset_A 14/132 A_2943aa6a6391
+dataset_A 15/132 A_298586f5b51e
+dataset_A 16/132 A_2a17f0d2d284
+dataset_A 17/132 A_2a6af25ac53d
+dataset_A 18/132 A_2b6649d45464
+dataset_A 19/132 A_2c24739bfc37
+dataset_A 20/132 A_30ac3350b775
+dataset_A 21/132 A_31ef463b1bea
+dataset_A 22/132 A_35e68da84de0
+dataset_A 23/132 A_3dbe8ee6a756
+dataset_A 24/132 A_3f0893ba7e08
+dataset_A 25/132 A_47da7888035b
+dataset_A 26/132 A_4943587e979a
+dataset_A 27/132 A_4ccbf56cf4cd
+dataset_A 28/132 A_4f4ac6bb4191
+dataset_A 29/132 A_50aebaf80030
+dataset_A 30/132 A_514501ce264b
+dataset_A 31/132 A_531184500017
+dataset_A 32/132 A_569b7b06e2ba
+dataset_A 33/132 A_580d66c2e73e
+dataset_A 34/132 A_582b9cbf3500
+dataset_A 35/132 A_5a27e8c83247
+dataset_A 36/132 A_5bdeb3318ab5
+dataset_A 37/132 A_5ce2fdf49d55
+dataset_A 38/132 A_603d38418936
+dataset_A 39/132 A_637702150232
+dataset_A 40/132 A_63d00c45ab21
+dataset_A 41/132 A_6727e8cd05eb
+dataset_A 42/132 A_672b3aec2387
+dataset_A 43/132 A_678bf900b6bb
+dataset_A 44/132 A_6b52492d64e6
+dataset_A 45/132 A_6cbbf04d959a
+dataset_A 46/132 A_704f180f1a15
+dataset_A 47/132 A_70961480945a
+dataset_A 48/132 A_715477ee1d4b
+dataset_A 49/132 A_7a52f980c7d4
+dataset_A 50/132 A_7eb356a96ed9
+dataset_A 51/132 A_7ed1e9651f6e
+dataset_A 52/132 A_8053ca6ff73a
+dataset_A 53/132 A_80acba59fae9
+dataset_A 54/132 A_8208ec67740d
+dataset_A 55/132 A_825e3ab58aa0
+dataset_A 56/132 A_875cc8135d65
+dataset_A 57/132 A_877b5bca1f7e
+dataset_A 58/132 A_877b725ebcb5
+dataset_A 59/132 A_87c00632cbff
+dataset_A 60/132 A_87ef928bd25c
+dataset_A 61/132 A_89260bcdd762
+dataset_A 62/132 A_8d0b9e89bbac
+dataset_A 63/132 A_8d3616b1f00a
+dataset_A 64/132 A_90973ff6ce5b
+dataset_A 65/132 A_93cd01b1948c
+dataset_A 66/132 A_9532b287fbb2
+dataset_A 67/132 A_9604c8edffb6
+dataset_A 68/132 A_96472c5b3701
+dataset_A 69/132 A_96a43c2c6dfc
+dataset_A 70/132 A_97e87d90ad87
+dataset_A 71/132 A_998bfea12b61
+dataset_A 72/132 A_9df8bf332664
+dataset_A 73/132 A_9ea6defd3d4a
+dataset_A 74/132 A_a2acc374998a
+dataset_A 75/132 A_a4b9384bb05c
+dataset_A 76/132 A_a623022cb5f5
+dataset_A 77/132 A_a631bf8ddf7a
+dataset_A 78/132 A_a648f78c73e7
+dataset_A 79/132 A_a6cf703575da
+dataset_A 80/132 A_a749361c8eca
+dataset_A 81/132 A_ac8579ac78a7
+dataset_A 82/132 A_af202bb8028c
+dataset_A 83/132 A_b0b8a4064a01
+dataset_A 84/132 A_b32e8ef8a1f5
+dataset_A 85/132 A_b5c5c6f4f644
+dataset_A 86/132 A_b5d806fa0289
+dataset_A 87/132 A_bb01af70531e
+dataset_A 88/132 A_bc478d8fe5cf
+dataset_A 89/132 A_c01e19ffb035
+dataset_A 90/132 A_c26b016e3efd
+dataset_A 91/132 A_c3d4e9c2f661
+dataset_A 92/132 A_c3edcc5d305a
+dataset_A 93/132 A_c5ef92cde8e5
+dataset_A 94/132 A_c7f2fc4dff27
+dataset_A 95/132 A_ca9a05a95f7d
+dataset_A 96/132 A_cb797a2fd323
+dataset_A 97/132 A_cde533cf14f6
+dataset_A 98/132 A_cecf35aac576
+dataset_A 99/132 A_d0ce8e79e3f7
+dataset_A 100/132 A_d0e24db3d05a
+dataset_A 101/132 A_d12433d2ea34
+dataset_A 102/132 A_d5b387e0de4f
+dataset_A 103/132 A_d62dda021ba4
+dataset_A 104/132 A_d6e8186f80a1
+dataset_A 105/132 A_d919b10a0150
+dataset_A 106/132 A_d9c6f866bb13
+dataset_A 107/132 A_d9c847ec7537
+dataset_A 108/132 A_dd5fc931a700
+dataset_A 109/132 A_dd9fdd5c250b
+dataset_A 110/132 A_de13334d8268
+dataset_A 111/132 A_dfb42fa9bf01
+dataset_A 112/132 A_e17f390187ec
+dataset_A 113/132 A_e1c2310e9a47
+dataset_A 114/132 A_e1fb6cbce84e
+dataset_A 115/132 A_e3dc65ed0eda
+dataset_A 116/132 A_e46cb2b113c9
+dataset_A 117/132 A_e4ee03919e71
+dataset_A 118/132 A_e529f18e4aa7
+dataset_A 119/132 A_e9dad1fa9472
+dataset_A 120/132 A_e9eaa310a76b
+dataset_A 121/132 A_eb9cacffbfb7
+dataset_A 122/132 A_ec94e4be3639
+dataset_A 123/132 A_ed7b1bacbf25
+dataset_A 124/132 A_f00052bd7db7
+dataset_A 125/132 A_f14a69dfa11c
+dataset_A 126/132 A_f3e8769b2737
+dataset_A 127/132 A_f49afdd1d643
+dataset_A 128/132 A_f4ee15df5340
+dataset_A 129/132 A_f69d196fbb51
+dataset_A 130/132 A_fea471d06b3a
+dataset_A 131/132 A_ff54e75574e8
+dataset_A 132/132 A_ffa6b788e459
+WARNING: feature_extractor_cqt requires the libray 'nnAudio'
+dataset_B 1/102 B_00c58205be82
+dataset_B 2/102 B_023b5d62e5c1
+dataset_B 3/102 B_038a3c29daa0
+dataset_B 4/102 B_03a1043d453f
+dataset_B 5/102 B_04dc3318c737
+dataset_B 6/102 B_052cf7e5c1c2
+dataset_B 7/102 B_0b8b415e295f
+dataset_B 8/102 B_0ed23f44ab52
+dataset_B 9/102 B_0f6fc0bc1868
+dataset_B 10/102 B_126e3ebe2d0c
+dataset_B 11/102 B_15ae10c29766
+dataset_B 12/102 B_1614c1f5f654
+dataset_B 13/102 B_18cfac6507c7
+dataset_B 14/102 B_1b784dbfd133
+dataset_B 15/102 B_1cadf75d0f70
+dataset_B 16/102 B_1d290830d776
+dataset_B 17/102 B_23859524ca8b
+dataset_B 18/102 B_2589160dd16f
+dataset_B 19/102 B_285dcd4e55d6
+dataset_B 20/102 B_2c77e7e40344
+dataset_B 21/102 B_2ebc6d7b3e3f
+dataset_B 22/102 B_2f0ad8d5a63d
+dataset_B 23/102 B_3162ade9cf9c
+dataset_B 24/102 B_36c1faa8fb4b
+dataset_B 25/102 B_3805cef6d8cd
+dataset_B 26/102 B_3bac35003c3f
+dataset_B 27/102 B_41719fd69fde
+dataset_B 28/102 B_4248e4a8db42
+dataset_B 29/102 B_4cc0b4329d82
+dataset_B 30/102 B_4dca6d91ea05
+dataset_B 31/102 B_4f87c1623a57
+dataset_B 32/102 B_5134ce77958b
+dataset_B 33/102 B_5391ecf8e03b
+dataset_B 34/102 B_551a965f7433
+dataset_B 35/102 B_58b96492b47f
+dataset_B 36/102 B_59aea13aaf6a
+dataset_B 37/102 B_59d2d848231f
+dataset_B 38/102 B_609ea6718e36
+dataset_B 39/102 B_63d98c759a55
+dataset_B 40/102 B_65c3fb6e8773
+dataset_B 41/102 B_6ac9badc2b7c
+dataset_B 42/102 B_6f088d504a7d
+dataset_B 43/102 B_71b02d6a92ce
+dataset_B 44/102 B_72ed1d20fc3d
+dataset_B 45/102 B_756fb72cfeb5
+dataset_B 46/102 B_762d6e3dfa1a
+dataset_B 47/102 B_774cb9f8b56e
+dataset_B 48/102 B_79d7f2ed1d1c
+dataset_B 49/102 B_7d32f6ebe0cc
+dataset_B 50/102 B_8d2e2cc755f2
+dataset_B 51/102 B_8d8c4e578532
+dataset_B 52/102 B_8f20bf5a475c
+dataset_B 53/102 B_8f3ac6f7b9e5
+dataset_B 54/102 B_933419ce4489
+dataset_B 55/102 B_943526d6e57e
+dataset_B 56/102 B_9926353fbfdc
+dataset_B 57/102 B_9ad93ebf588e
+dataset_B 58/102 B_9b2dd58128af
+dataset_B 59/102 B_9db44818efec
+dataset_B 60/102 B_a4d81d53558e
+dataset_B 61/102 B_a5c4be395f25
+dataset_B 62/102 B_ad44fe430db6
+dataset_B 63/102 B_ad4ef17695e6
+dataset_B 64/102 B_b20b26c20ea9
+dataset_B 65/102 B_b2f3eb1702f1
+dataset_B 66/102 B_b45abda322fc
+dataset_B 67/102 B_b673453d3589
+dataset_B 68/102 B_b8c9f3dbe184
+dataset_B 69/102 B_c500d8e176c4
+dataset_B 70/102 B_c58d407cada1
+dataset_B 71/102 B_c689e8aad7a7
+dataset_B 72/102 B_c74be1cb79a9
+dataset_B 73/102 B_c8827f647eb8
+dataset_B 74/102 B_c8e2865bcac2
+dataset_B 75/102 B_cb872c6b28bb
+dataset_B 76/102 B_cf3a82be7bcf
+dataset_B 77/102 B_d2f82beafc60
+dataset_B 78/102 B_d50f0dbf8b2e
+dataset_B 79/102 B_d56287266afa
+dataset_B 80/102 B_d7d6be259b70
+dataset_B 81/102 B_d86f0830b5db
+dataset_B 82/102 B_da3eb54225a8
+dataset_B 83/102 B_de88d9731598
+dataset_B 84/102 B_df736a4b61ca
+dataset_B 85/102 B_e24542d49c3e
+dataset_B 86/102 B_e2481da3f704
+dataset_B 87/102 B_e4db4ef2c052
+dataset_B 88/102 B_e5f6ddfd4b23
+dataset_B 89/102 B_e72b08ea76b5
+dataset_B 90/102 B_e80a5549cffe
+dataset_B 91/102 B_e86ea10af862
+dataset_B 92/102 B_e8df0b863744
+dataset_B 93/102 B_e97520a2bb76
+dataset_B 94/102 B_ea7e7571558d
+dataset_B 95/102 B_eab0e99ee28b
+dataset_B 96/102 B_ebb9119ccebb
+dataset_B 97/102 B_efe7fc5caccd
+dataset_B 98/102 B_f15a12e5fcec
+dataset_B 99/102 B_f236cdc3cc3f
+dataset_B 100/102 B_f8f75b9d9038
+dataset_B 101/102 B_f904d6eafa80
+dataset_B 102/102 B_fe04a16f7ec3

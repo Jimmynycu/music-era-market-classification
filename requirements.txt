@@ -1,0 +1,9 @@
+numpy==1.26.4
+scipy==1.14.1
+scikit-learn==1.5.2
+joblib==1.6.0
+soundfile==0.12.1
+librosa==0.10.2.post1
+torch==2.6.0
+transformers==4.44.2
+huggingface-hub==0.36.2

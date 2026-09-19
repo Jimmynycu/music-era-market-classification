@@ -1,0 +1,13 @@
+.venv/
+data/
+downloads/
+models/
+cache/
+tmp/
+__pycache__/
+output/
+submission/
+checkpoints/*.pt
+results/*_cv_progress.json
+results/*_reproduced.json
+alm_runtime/

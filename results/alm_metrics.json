@@ -1,0 +1,168 @@
+{
+  "metadata": {
+    "model": "Qwen2.5-Omni-3B (frozen Thinker)",
+    "model_url": "https://huggingface.co/Qwen/Qwen2.5-Omni-3B",
+    "gguf_url": "https://huggingface.co/ggml-org/Qwen2.5-Omni-3B-GGUF",
+    "revision": "GGUF repository revision 75f1b73b657a50f5092502799457ccb4a4a1f9df",
+    "quantization": "Q4_K_M language model; Q8_0 multimodal projector/audio encoder",
+    "engine": "llama.cpp b11049, commit efa28e950",
+    "engine_url": "https://github.com/ggml-org/llama.cpp",
+    "prompt_design": "One prespecified cue-based prompt; explicit label mapping and ranked constrained output minimize parsing ambiguity and inference cost on the local hardware. The market prompt distinguishes release market from nationality and language. No examples or validation-label feedback are used.",
+    "system_prompt": "You are Qwen, a virtual human developed by the Qwen Team, Alibaba Group, capable of perceiving auditory and visual inputs, as well as generating text and speech.",
+    "prompt_A": "Estimate the release decade of this US music recording. Listen to the whole excerpt. Consider instrumentation, rhythm, vocal language or style when audible, recording texture, and production techniques. The recording may be instrumental and these cues can be ambiguous. Rank all six candidate labels from most to least likely based only on the audio. Candidates: A = 1960s; B = 1970s; C = 1980s; D = 1990s; E = 2000s; F = 2010s. Return exactly the six different uppercase letter codes in descending confidence order, separated by commas. Use every code A through F exactly once. Do not write an explanation.",
+    "prompt_B": "Estimate the release market of this music recording from the 1980s. A release market is where the record was released; it is not necessarily the artist nationality or the language of the vocals. Listen to the whole excerpt. Consider instrumentation, rhythm, vocal language or style when audible, recording texture, and production techniques. The recording may be instrumental and these cues can be ambiguous. Rank all six candidate labels from most to least likely based only on the audio. Candidates: A = Brazil; B = Germany; C = Italy; D = Spain; E = UK; F = US. Return exactly the six different uppercase letter codes in descending confidence order, separated by commas. Use every code A through F exactly once. Do not write an explanation.",
+    "audio_processing": "Complete 30-second mono 24-kHz PCM WAV, internally resampled to 16 kHz. This llama.cpp compatibility path adds 30 seconds of zeros and processes two 3000-frame mel chunks, yielding 1500 audio tokens. No external cropping, augmentation, or waveform normalization; preprocessing equivalence to original Transformers is unverified.",
+    "implementation_caveat": "Results describe this particular quantized experimental llama.cpp implementation, not a verified reproduction of the original Transformers model. The audio payload and parsing were checked without new inference or prompt tuning; see alm_integrity_check.json for pinned source references and remaining uncertainty.",
+    "parsing": "GBNF decoding allows exactly the 720 permutations of A,B,C,D,E,F. Strictly require six distinct codes, map to labels, and use first three. All six labels receive ordinal scores 6,5,4,3,2,1 in rank order; these are not calibrated probabilities.",
+    "invalid_handling": "Log raw output and failures. Retry a failed/invalid answer once with the identical input. If both fail, use the prespecified canonical class order (no label access), flag fallback, and include it in all-sample metrics. Connection/server failures halt the run rather than silently replacing the whole evaluation.",
+    "decoding": {
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 32
+    },
+    "server_memory": "Context 2048; one slot; prompt host cache disabled (--cache-ram 0) after initial samples to keep local RAM bounded. Completed outputs were preserved. GPU allocation approximately 4.1 GiB.",
+    "runtime_definition": "Sum of completed per-sample request wall times, including preprocessing and decoding, excluding downloads, model loading, and interruptions. All saved outputs used the local Vulkan GPU server. Concurrent local CUDA feature/test inference and GPU clock state affected speed; a temporary one-element CUDA context maintained active clocks for the final B samples without changing global GPU settings.",
+    "compute_device": "NVIDIA GeForce GTX 1060 6GB, Vulkan; 2 CPU threads; all model layers and audio projector GPU-offloaded"
+  },
+  "split": "validation",
+  "datasets": {
+    "dataset_A": {
+      "classes": [
+        "1960s",
+        "1970s",
+        "1980s",
+        "1990s",
+        "2000s",
+        "2010s"
+      ],
+      "invalid_outputs": 0,
+      "fallback_samples": 0,
+      "elapsed_seconds": 2363.9998541013338,
+      "validation": {
+        "n_samples": 132,
+        "top1": 0.21212121212121213,
+        "top3": 0.6287878787878788,
+        "confusion_matrix": [
+          [
+            20,
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            17,
+            4,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            12,
+            6,
+            4,
+            0,
+            0,
+            0
+          ],
+          [
+            7,
+            10,
+            5,
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            5,
+            7,
+            0,
+            0,
+            0
+          ],
+          [
+            8,
+            4,
+            10,
+            0,
+            0,
+            0
+          ]
+        ],
+        "confusion_matrix_units": "counts; rows=true, columns=predicted"
+      }
+    },
+    "dataset_B": {
+      "classes": [
+        "Brazil",
+        "Germany",
+        "Italy",
+        "Spain",
+        "UK",
+        "US"
+      ],
+      "invalid_outputs": 0,
+      "fallback_samples": 0,
+      "elapsed_seconds": 1845.2595437256387,
+      "validation": {
+        "n_samples": 102,
+        "top1": 0.3137254901960784,
+        "top3": 0.6176470588235294,
+        "confusion_matrix": [
+          [
+            10,
+            0,
+            0,
+            0,
+            0,
+            7
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            16
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            16
+          ],
+          [
+            2,
+            0,
+            0,
+            2,
+            0,
+            13
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            15
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            17
+          ]
+        ],
+        "confusion_matrix_units": "counts; rows=true, columns=predicted"
+      }
+    }
+  }
+}

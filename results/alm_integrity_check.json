@@ -1,0 +1,167 @@
+{
+  "payload_sanity": [
+    {
+      "dataset": "dataset_A",
+      "sample_id": "A_007e1d02fd77",
+      "sha256": "0b8a7a997e68ff5dbca8f7377b6b3217175cd8e737554c499ac545c3d3832699",
+      "sent_bytes": 1440078,
+      "payload_audio_matches_released_sha256": true,
+      "seconds": 30.0,
+      "rate": 24000,
+      "channels": 1,
+      "sample_bytes": 2,
+      "frames": 720000
+    },
+    {
+      "dataset": "dataset_A",
+      "sample_id": "A_870b58a1e10c",
+      "sha256": "065abaffdd6976d9ebf31e6f98d185b7774c6371aba335bffb3b44d432b0bcce",
+      "sent_bytes": 1440078,
+      "payload_audio_matches_released_sha256": true,
+      "seconds": 30.0,
+      "rate": 24000,
+      "channels": 1,
+      "sample_bytes": 2,
+      "frames": 720000
+    },
+    {
+      "dataset": "dataset_A",
+      "sample_id": "A_ff331864c62f",
+      "sha256": "cf89ab1e910bda2404ac8757293b8db281d5e2e131deae9ed667527be810fed6",
+      "sent_bytes": 1440078,
+      "payload_audio_matches_released_sha256": true,
+      "seconds": 30.0,
+      "rate": 24000,
+      "channels": 1,
+      "sample_bytes": 2,
+      "frames": 720000
+    },
+    {
+      "dataset": "dataset_B",
+      "sample_id": "B_007c484b6818",
+      "sha256": "c13dbf079053a2e0c3a8648fdb075d721ba7f5d8c4fc3660488a4dc02083a9ba",
+      "sent_bytes": 1440078,
+      "payload_audio_matches_released_sha256": true,
+      "seconds": 30.0,
+      "rate": 24000,
+      "channels": 1,
+      "sample_bytes": 2,
+      "frames": 720000
+    },
+    {
+      "dataset": "dataset_B",
+      "sample_id": "B_99f65134c641",
+      "sha256": "ceed58c5b20f930244c4fabe784719e8bb59df0e6b8c8e714dc82cf77e5eda34",
+      "sent_bytes": 1440078,
+      "payload_audio_matches_released_sha256": true,
+      "seconds": 30.0,
+      "rate": 24000,
+      "channels": 1,
+      "sample_bytes": 2,
+      "frames": 720000
+    },
+    {
+      "dataset": "dataset_B",
+      "sample_id": "B_fd25e478b03b",
+      "sha256": "01a15e85e6e0323e239fd5fa0fb5b1a2d8e2c4ca23866df3f2fb556f3a0352b6",
+      "sent_bytes": 1440078,
+      "payload_audio_matches_released_sha256": true,
+      "seconds": 30.0,
+      "rate": 24000,
+      "channels": 1,
+      "sample_bytes": 2,
+      "frames": 720000
+    }
+  ],
+  "observed_request_token_counts": {
+    "('dataset_A', 1702, 1701)": 1,
+    "('dataset_A', 1702, 44)": 130,
+    "('dataset_A', 1702, 0)": 1,
+    "('dataset_B', 1703, 44)": 9
+  },
+  "n_logged": 141,
+  "distinct_rankings_A": 17,
+  "invalid_attempts": 0,
+  "method": "Read-only request-construction check: monkeypatch urllib.request.urlopen to capture the actual request_ranking serialization for six WAVs without sending new inference requests. Separately inspect saved response token counts and pinned runtime source.",
+  "prompt_token_counts": {
+    "dataset_A": 152,
+    "dataset_B": 153
+  },
+  "audio_token_interpretation": {
+    "chat_system_and_boundary_tokens": 50,
+    "audio_tokens_per_30_second_source": 1500,
+    "request_tokens_A": 1702,
+    "request_tokens_B": 1703,
+    "common_cached_text_tokens": 44,
+    "first_A_warm_cache_note": "The first final A request reused the exact same clip from the hardware benchmark; all other completed A clips reused at most the 44 common text tokens."
+  },
+  "runtime_preprocessing": {
+    "engine": "llama.cpp b11049, commit efa28e950",
+    "input_seconds": 30,
+    "input_sample_rate": 24000,
+    "encoder_sample_rate": 16000,
+    "native_trailing_zero_padding_seconds": 30,
+    "mel_chunk_frames": 3000,
+    "pooling": "The Qwen25O compatibility path uses Whisper preprocessing and Qwen2A audio projection with 2x convolution stride and 2x average pooling. Each 3000-frame chunk therefore yields 750 tokens; two padded chunks yield 1500 audio tokens.",
+    "sources": [
+      "https://github.com/ggml-org/llama.cpp/blob/b11049/tools/mtmd/mtmd.cpp",
+      "https://github.com/ggml-org/llama.cpp/blob/b11049/tools/mtmd/mtmd-audio.cpp",
+      "https://github.com/ggml-org/llama.cpp/blob/b11049/tools/mtmd/clip.cpp",
+      "https://github.com/ggml-org/llama.cpp/blob/b11049/tools/mtmd/models/whisper-enc.cpp"
+    ]
+  },
+  "conclusion": "No missing, repeated-across-samples, or externally truncated audio payload, label leakage, or output-mapping bug was observed. The full 30-second source audio is present. This check does not verify numerical or preprocessing equivalence to the original Transformers implementation; the runtime itself warns that audio is experimental. The observed class collapse cannot be assigned to quantization, prompt-order bias, runtime preprocessing, or model limitations without separate controlled experiments.",
+  "protocol_changed": false,
+  "new_inference_calls_for_check": 0,
+  "final_verification": {
+    "verified_at": "2026-09-19T11:56:06.556862+00:00",
+    "n_samples": 234,
+    "raw_predictions_sha256": "7b258b1834cf8d09c58bf3bcbd75efbad5d9807e19d428dd6f778ef83ef943b7",
+    "datasets": {
+      "dataset_A": {
+        "n_samples": 132,
+        "top1_correct": 28,
+        "top3_correct": 83,
+        "top1": 0.21212121212121213,
+        "top3": 0.6287878787878788,
+        "invalid_outputs": 0,
+        "fallback_samples": 0,
+        "elapsed_seconds": 2363.9998541013338,
+        "distinct_rankings": 17,
+        "prediction_counts": {
+          "1960s": 74,
+          "1970s": 31,
+          "1980s": 27
+        },
+        "all_validation_ids_unique_and_present": true,
+        "labels_and_prompt_hashes_match": true,
+        "all_rankings_and_ordinal_scores_valid": true,
+        "metrics_independently_recomputed": true
+      },
+      "dataset_B": {
+        "n_samples": 102,
+        "top1_correct": 32,
+        "top3_correct": 63,
+        "top1": 0.3137254901960784,
+        "top3": 0.6176470588235294,
+        "invalid_outputs": 0,
+        "fallback_samples": 0,
+        "elapsed_seconds": 1845.2595437256387,
+        "distinct_rankings": 10,
+        "prediction_counts": {
+          "US": 84,
+          "UK": 2,
+          "Brazil": 13,
+          "Italy": 1,
+          "Spain": 2
+        },
+        "all_validation_ids_unique_and_present": true,
+        "labels_and_prompt_hashes_match": true,
+        "all_rankings_and_ordinal_scores_valid": true,
+        "metrics_independently_recomputed": true
+      }
+    },
+    "new_inference_calls": 0,
+    "metadata_refreshed_without_changing_predictions": true
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "scope": "CPU spot-check of the smallest Top-1 and Top-3 score boundaries per dataset; full test reproduction is checked separately on CUDA.",
+  "all_checked_rankings_match": true,
+  "checks": [
+    {
+      "dataset": "dataset_A",
+      "sample_id": "A_dfb42fa9bf01",
+      "expected": [
+        "2000s",
+        "1990s",
+        "1980s"
+      ],
+      "actual": [
+        "2000s",
+        "1990s",
+        "1980s"
+      ],
+      "exact_top3_match": true,
+      "max_feature_absolute_difference": 3.5762786865234375e-06
+    },
+    {
+      "dataset": "dataset_A",
+      "sample_id": "A_e46cb2b113c9",
+      "expected": [
+        "1970s",
+        "2010s",
+        "2000s"
+      ],
+      "actual": [
+        "1970s",
+        "2010s",
+        "2000s"
+      ],
+      "exact_top3_match": true,
+      "max_feature_absolute_difference": 3.2186508178710938e-06
+    },
+    {
+      "dataset": "dataset_B",
+      "sample_id": "B_1614c1f5f654",
+      "expected": [
+        "Spain",
+        "Brazil",
+        "Germany"
+      ],
+      "actual": [
+        "Spain",
+        "Brazil",
+        "Germany"
+      ],
+      "exact_top3_match": true,
+      "max_feature_absolute_difference": 3.4570693969726562e-06
+    },
+    {
+      "dataset": "dataset_B",
+      "sample_id": "B_2ebc6d7b3e3f",
+      "expected": [
+        "Brazil",
+        "UK",
+        "Italy"
+      ],
+      "actual": [
+        "Brazil",
+        "UK",
+        "Italy"
+      ],
+      "exact_top3_match": true,
+      "max_feature_absolute_difference": 3.6954879760742188e-06
+    }
+  ]
+}

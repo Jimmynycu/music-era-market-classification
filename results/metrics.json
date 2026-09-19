@@ -1,0 +1,1797 @@
+{
+  "protocol": {
+    "fit_split": "train",
+    "selection": "training-only stratified three-fold cross-validation",
+    "selection_score": "top1 + 0.5 * top3; ties use top1 then fixed candidate order",
+    "random_seed": 2026,
+    "preprocessing": "StandardScaler fitted within each training fold, then per-recording L2 normalization",
+    "validation_use": "single final evaluation after selecting and refitting on full training split",
+    "augmentation": "none",
+    "threads": 1
+  },
+  "datasets": {
+    "dataset_A": {
+      "classes": [
+        "1960s",
+        "1970s",
+        "1980s",
+        "1990s",
+        "2000s",
+        "2010s"
+      ],
+      "selected": {
+        "name": "hybrid: ridge alpha=1",
+        "feature_recipe": "hybrid",
+        "feature_family": "hybrid",
+        "classifier": "ridge",
+        "parameters": {
+          "alpha": 1.0
+        },
+        "top1": 0.4171539961013645,
+        "top3": 0.7914230019493177,
+        "selection_score": 0.8128654970760234,
+        "cv_top1": 0.4171539961013645,
+        "cv_top3": 0.7914230019493177,
+        "description": "Concatenated mean MERT layers 1-4, 5-8, 9-12, and acoustic statistics.",
+        "feature_dimensions": 4852
+      },
+      "cv_results": [
+        {
+          "name": "acoustic: ridge alpha=0.01",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.01
+          },
+          "top1": 0.2573099415204678,
+          "top3": 0.6744639376218323,
+          "selection_score": 0.594541910331384
+        },
+        {
+          "name": "acoustic: ridge alpha=0.1",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.1
+          },
+          "top1": 0.28167641325536064,
+          "top3": 0.6793372319688109,
+          "selection_score": 0.6213450292397661
+        },
+        {
+          "name": "acoustic: ridge alpha=1",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 1.0
+          },
+          "top1": 0.28654970760233917,
+          "top3": 0.6998050682261209,
+          "selection_score": 0.6364522417153996
+        },
+        {
+          "name": "acoustic: ridge alpha=10",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 10.0
+          },
+          "top1": 0.27387914230019494,
+          "top3": 0.7261208576998051,
+          "selection_score": 0.6369395711500975
+        },
+        {
+          "name": "acoustic: RBF SVC C=0.1",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 0.1,
+            "gamma": "scale"
+          },
+          "top1": 0.22807017543859648,
+          "top3": 0.6267056530214425,
+          "selection_score": 0.5414230019493178
+        },
+        {
+          "name": "acoustic: RBF SVC C=1",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 1.0,
+            "gamma": "scale"
+          },
+          "top1": 0.2875243664717349,
+          "top3": 0.7192982456140351,
+          "selection_score": 0.6471734892787524
+        },
+        {
+          "name": "acoustic: RBF SVC C=10",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 10.0,
+            "gamma": "scale"
+          },
+          "top1": 0.2875243664717349,
+          "top3": 0.7115009746588694,
+          "selection_score": 0.6432748538011697
+        },
+        {
+          "name": "acoustic: RBF SVC C=100",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 100.0,
+            "gamma": "scale"
+          },
+          "top1": 0.29142300194931775,
+          "top3": 0.716374269005848,
+          "selection_score": 0.6496101364522417
+        },
+        {
+          "name": "mert_middle: ridge alpha=0.01",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.01
+          },
+          "top1": 0.30409356725146197,
+          "top3": 0.6812865497076024,
+          "selection_score": 0.6447368421052632
+        },
+        {
+          "name": "mert_middle: ridge alpha=0.1",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.1
+          },
+          "top1": 0.3557504873294347,
+          "top3": 0.7251461988304093,
+          "selection_score": 0.7183235867446394
+        },
+        {
+          "name": "mert_middle: ridge alpha=1",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 1.0
+          },
+          "top1": 0.4239766081871345,
+          "top3": 0.7699805068226121,
+          "selection_score": 0.8089668615984406
+        },
+        {
+          "name": "mert_middle: ridge alpha=10",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 10.0
+          },
+          "top1": 0.41228070175438597,
+          "top3": 0.7816764132553606,
+          "selection_score": 0.8031189083820662
+        },
+        {
+          "name": "mert_middle: RBF SVC C=0.1",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 0.1,
+            "gamma": "scale"
+          },
+          "top1": 0.33430799220272905,
+          "top3": 0.7270955165692008,
+          "selection_score": 0.6978557504873295
+        },
+        {
+          "name": "mert_middle: RBF SVC C=1",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 1.0,
+            "gamma": "scale"
+          },
+          "top1": 0.4171539961013645,
+          "top3": 0.7816764132553606,
+          "selection_score": 0.8079922027290448
+        },
+        {
+          "name": "mert_middle: RBF SVC C=10",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 10.0,
+            "gamma": "scale"
+          },
+          "top1": 0.4152046783625731,
+          "top3": 0.7816764132553606,
+          "selection_score": 0.8060428849902534
+        },
+        {
+          "name": "mert_middle: RBF SVC C=100",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 100.0,
+            "gamma": "scale"
+          },
+          "top1": 0.4152046783625731,
+          "top3": 0.7816764132553606,
+          "selection_score": 0.8060428849902534
+        },
+        {
+          "name": "mert_late: ridge alpha=0.01",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.01
+          },
+          "top1": 0.29434697855750486,
+          "top3": 0.6764132553606238,
+          "selection_score": 0.6325536062378168
+        },
+        {
+          "name": "mert_late: ridge alpha=0.1",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.1
+          },
+          "top1": 0.33235867446393763,
+          "top3": 0.6978557504873294,
+          "selection_score": 0.6812865497076024
+        },
+        {
+          "name": "mert_late: ridge alpha=1",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 1.0
+          },
+          "top1": 0.37719298245614036,
+          "top3": 0.7543859649122807,
+          "selection_score": 0.7543859649122807
+        },
+        {
+          "name": "mert_late: ridge alpha=10",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 10.0
+          },
+          "top1": 0.3469785575048733,
+          "top3": 0.7436647173489279,
+          "selection_score": 0.7188109161793372
+        },
+        {
+          "name": "mert_late: RBF SVC C=0.1",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 0.1,
+            "gamma": "scale"
+          },
+          "top1": 0.2982456140350877,
+          "top3": 0.6881091617933723,
+          "selection_score": 0.6423001949317739
+        },
+        {
+          "name": "mert_late: RBF SVC C=1",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 1.0,
+            "gamma": "scale"
+          },
+          "top1": 0.33235867446393763,
+          "top3": 0.7475633528265108,
+          "selection_score": 0.7061403508771931
+        },
+        {
+          "name": "mert_late: RBF SVC C=10",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 10.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3538011695906433,
+          "top3": 0.7612085769980507,
+          "selection_score": 0.7344054580896686
+        },
+        {
+          "name": "mert_late: RBF SVC C=100",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 100.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3538011695906433,
+          "top3": 0.7612085769980507,
+          "selection_score": 0.7344054580896686
+        },
+        {
+          "name": "mert_all: ridge alpha=0.01",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.01
+          },
+          "top1": 0.27582846003898637,
+          "top3": 0.672514619883041,
+          "selection_score": 0.6120857699805069
+        },
+        {
+          "name": "mert_all: ridge alpha=0.1",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.1
+          },
+          "top1": 0.3489278752436647,
+          "top3": 0.7290448343079922,
+          "selection_score": 0.7134502923976608
+        },
+        {
+          "name": "mert_all: ridge alpha=1",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 1.0
+          },
+          "top1": 0.4074074074074074,
+          "top3": 0.7729044834307992,
+          "selection_score": 0.7938596491228069
+        },
+        {
+          "name": "mert_all: ridge alpha=10",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 10.0
+          },
+          "top1": 0.38791423001949316,
+          "top3": 0.7612085769980507,
+          "selection_score": 0.7685185185185185
+        },
+        {
+          "name": "mert_all: RBF SVC C=0.1",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 0.1,
+            "gamma": "scale"
+          },
+          "top1": 0.31871345029239767,
+          "top3": 0.7144249512670565,
+          "selection_score": 0.6759259259259259
+        },
+        {
+          "name": "mert_all: RBF SVC C=1",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 1.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3713450292397661,
+          "top3": 0.7943469785575049,
+          "selection_score": 0.7685185185185186
+        },
+        {
+          "name": "mert_all: RBF SVC C=10",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 10.0,
+            "gamma": "scale"
+          },
+          "top1": 0.38011695906432746,
+          "top3": 0.7777777777777778,
+          "selection_score": 0.7690058479532164
+        },
+        {
+          "name": "mert_all: RBF SVC C=100",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 100.0,
+            "gamma": "scale"
+          },
+          "top1": 0.38011695906432746,
+          "top3": 0.7777777777777778,
+          "selection_score": 0.7690058479532164
+        },
+        {
+          "name": "hybrid: ridge alpha=0.01",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.01
+          },
+          "top1": 0.3489278752436647,
+          "top3": 0.7085769980506823,
+          "selection_score": 0.7032163742690059
+        },
+        {
+          "name": "hybrid: ridge alpha=0.1",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.1
+          },
+          "top1": 0.3840155945419103,
+          "top3": 0.7456140350877193,
+          "selection_score": 0.75682261208577
+        },
+        {
+          "name": "hybrid: ridge alpha=1",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 1.0
+          },
+          "top1": 0.4171539961013645,
+          "top3": 0.7914230019493177,
+          "selection_score": 0.8128654970760234
+        },
+        {
+          "name": "hybrid: ridge alpha=10",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 10.0
+          },
+          "top1": 0.3810916179337232,
+          "top3": 0.7748538011695907,
+          "selection_score": 0.7685185185185186
+        },
+        {
+          "name": "hybrid: RBF SVC C=0.1",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 0.1,
+            "gamma": "scale"
+          },
+          "top1": 0.3226120857699805,
+          "top3": 0.7270955165692008,
+          "selection_score": 0.6861598440545809
+        },
+        {
+          "name": "hybrid: RBF SVC C=1",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 1.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3810916179337232,
+          "top3": 0.783625730994152,
+          "selection_score": 0.7729044834307992
+        },
+        {
+          "name": "hybrid: RBF SVC C=10",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 10.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3937621832358674,
+          "top3": 0.7962962962962963,
+          "selection_score": 0.7919103313840156
+        },
+        {
+          "name": "hybrid: RBF SVC C=100",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 100.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3937621832358674,
+          "top3": 0.7962962962962963,
+          "selection_score": 0.7919103313840156
+        }
+      ],
+      "validation": {
+        "top1": 0.4015151515151515,
+        "top3": 0.8333333333333334,
+        "n_samples": 132,
+        "confusion_matrix": [
+          [
+            17,
+            3,
+            0,
+            1,
+            0,
+            1
+          ],
+          [
+            7,
+            8,
+            2,
+            2,
+            2,
+            1
+          ],
+          [
+            1,
+            2,
+            11,
+            3,
+            5,
+            0
+          ],
+          [
+            1,
+            1,
+            7,
+            5,
+            6,
+            2
+          ],
+          [
+            4,
+            2,
+            2,
+            2,
+            4,
+            8
+          ],
+          [
+            2,
+            2,
+            1,
+            2,
+            7,
+            8
+          ]
+        ],
+        "confusion_matrix_kind": "counts",
+        "total_errors": 79,
+        "largest_confusions": [
+          {
+            "true": "2000s",
+            "predicted": "2010s",
+            "count": 8
+          },
+          {
+            "true": "1970s",
+            "predicted": "1960s",
+            "count": 7
+          },
+          {
+            "true": "1990s",
+            "predicted": "1980s",
+            "count": 7
+          },
+          {
+            "true": "2010s",
+            "predicted": "2000s",
+            "count": 7
+          },
+          {
+            "true": "1990s",
+            "predicted": "2000s",
+            "count": 6
+          },
+          {
+            "true": "1980s",
+            "predicted": "2000s",
+            "count": 5
+          },
+          {
+            "true": "2000s",
+            "predicted": "1960s",
+            "count": 4
+          },
+          {
+            "true": "1960s",
+            "predicted": "1970s",
+            "count": 3
+          }
+        ],
+        "per_class_accuracy": {
+          "1960s": 0.7727272727272727,
+          "1970s": 0.36363636363636365,
+          "1980s": 0.5,
+          "1990s": 0.22727272727272727,
+          "2000s": 0.18181818181818182,
+          "2010s": 0.36363636363636365
+        },
+        "adjacent_errors": 47,
+        "adjacent_error_fraction": 0.5949367088607594
+      },
+      "comparisons": {
+        "acoustic": {
+          "selected": {
+            "name": "acoustic: RBF SVC C=100",
+            "feature_recipe": "acoustic",
+            "feature_family": "acoustic",
+            "classifier": "rbf_svc",
+            "parameters": {
+              "C": 100.0,
+              "gamma": "scale"
+            },
+            "top1": 0.29142300194931775,
+            "top3": 0.716374269005848,
+            "selection_score": 0.6496101364522417,
+            "cv_top1": 0.29142300194931775,
+            "cv_top3": 0.716374269005848,
+            "description": "244 acoustic statistics: full-excerpt mean and standard deviation."
+          },
+          "validation": {
+            "top1": 0.3181818181818182,
+            "top3": 0.7196969696969697,
+            "n_samples": 132,
+            "confusion_matrix": [
+              [
+                6,
+                7,
+                2,
+                6,
+                1,
+                0
+              ],
+              [
+                3,
+                10,
+                2,
+                3,
+                2,
+                2
+              ],
+              [
+                2,
+                3,
+                6,
+                6,
+                3,
+                2
+              ],
+              [
+                4,
+                4,
+                3,
+                4,
+                6,
+                1
+              ],
+              [
+                3,
+                1,
+                2,
+                4,
+                5,
+                7
+              ],
+              [
+                3,
+                1,
+                1,
+                3,
+                3,
+                11
+              ]
+            ],
+            "confusion_matrix_kind": "counts",
+            "total_errors": 90,
+            "largest_confusions": [
+              {
+                "true": "1960s",
+                "predicted": "1970s",
+                "count": 7
+              },
+              {
+                "true": "2000s",
+                "predicted": "2010s",
+                "count": 7
+              },
+              {
+                "true": "1960s",
+                "predicted": "1990s",
+                "count": 6
+              },
+              {
+                "true": "1980s",
+                "predicted": "1990s",
+                "count": 6
+              },
+              {
+                "true": "1990s",
+                "predicted": "2000s",
+                "count": 6
+              },
+              {
+                "true": "1990s",
+                "predicted": "1960s",
+                "count": 4
+              },
+              {
+                "true": "1990s",
+                "predicted": "1970s",
+                "count": 4
+              },
+              {
+                "true": "2000s",
+                "predicted": "1990s",
+                "count": 4
+              }
+            ],
+            "per_class_accuracy": {
+              "1960s": 0.2727272727272727,
+              "1970s": 0.45454545454545453,
+              "1980s": 0.2727272727272727,
+              "1990s": 0.18181818181818182,
+              "2000s": 0.22727272727272727,
+              "2010s": 0.5
+            },
+            "adjacent_errors": 44,
+            "adjacent_error_fraction": 0.4888888888888889
+          }
+        },
+        "mert": {
+          "selected": {
+            "name": "mert_middle: ridge alpha=1",
+            "feature_recipe": "mert_middle",
+            "feature_family": "mert",
+            "classifier": "ridge",
+            "parameters": {
+              "alpha": 1.0
+            },
+            "top1": 0.4239766081871345,
+            "top3": 0.7699805068226121,
+            "selection_score": 0.8089668615984406,
+            "cv_top1": 0.4239766081871345,
+            "cv_top3": 0.7699805068226121,
+            "description": "Mean of MERT layers 5-8; 768 frame means and 768 frame standard deviations."
+          },
+          "validation": {
+            "top1": 0.4166666666666667,
+            "top3": 0.7954545454545454,
+            "n_samples": 132,
+            "confusion_matrix": [
+              [
+                17,
+                2,
+                0,
+                1,
+                2,
+                0
+              ],
+              [
+                8,
+                6,
+                2,
+                2,
+                2,
+                2
+              ],
+              [
+                2,
+                4,
+                9,
+                4,
+                3,
+                0
+              ],
+              [
+                2,
+                0,
+                5,
+                6,
+                5,
+                4
+              ],
+              [
+                1,
+                4,
+                2,
+                3,
+                5,
+                7
+              ],
+              [
+                2,
+                1,
+                0,
+                0,
+                7,
+                12
+              ]
+            ],
+            "confusion_matrix_kind": "counts",
+            "total_errors": 77,
+            "largest_confusions": [
+              {
+                "true": "1970s",
+                "predicted": "1960s",
+                "count": 8
+              },
+              {
+                "true": "2000s",
+                "predicted": "2010s",
+                "count": 7
+              },
+              {
+                "true": "2010s",
+                "predicted": "2000s",
+                "count": 7
+              },
+              {
+                "true": "1990s",
+                "predicted": "1980s",
+                "count": 5
+              },
+              {
+                "true": "1990s",
+                "predicted": "2000s",
+                "count": 5
+              },
+              {
+                "true": "1980s",
+                "predicted": "1970s",
+                "count": 4
+              },
+              {
+                "true": "1980s",
+                "predicted": "1990s",
+                "count": 4
+              },
+              {
+                "true": "1990s",
+                "predicted": "2010s",
+                "count": 4
+              }
+            ],
+            "per_class_accuracy": {
+              "1960s": 0.7727272727272727,
+              "1970s": 0.2727272727272727,
+              "1980s": 0.4090909090909091,
+              "1990s": 0.2727272727272727,
+              "2000s": 0.22727272727272727,
+              "2010s": 0.5454545454545454
+            },
+            "adjacent_errors": 47,
+            "adjacent_error_fraction": 0.6103896103896104
+          }
+        }
+      },
+      "train_samples": 1026,
+      "test_samples": 132,
+      "training_seconds": 86.93
+    },
+    "dataset_B": {
+      "classes": [
+        "US",
+        "UK",
+        "Brazil",
+        "Spain",
+        "Germany",
+        "Italy"
+      ],
+      "selected": {
+        "name": "mert_middle: ridge alpha=1",
+        "feature_recipe": "mert_middle",
+        "feature_family": "mert",
+        "classifier": "ridge",
+        "parameters": {
+          "alpha": 1.0
+        },
+        "top1": 0.37343358395989973,
+        "top3": 0.7368421052631579,
+        "selection_score": 0.7418546365914787,
+        "cv_top1": 0.37343358395989973,
+        "cv_top3": 0.7368421052631579,
+        "description": "Mean of MERT layers 5-8; 768 frame means and 768 frame standard deviations.",
+        "feature_dimensions": 1536
+      },
+      "cv_results": [
+        {
+          "name": "acoustic: ridge alpha=0.01",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.01
+          },
+          "top1": 0.24185463659147868,
+          "top3": 0.6278195488721805,
+          "selection_score": 0.5557644110275689
+        },
+        {
+          "name": "acoustic: ridge alpha=0.1",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.1
+          },
+          "top1": 0.2706766917293233,
+          "top3": 0.6453634085213033,
+          "selection_score": 0.5933583959899749
+        },
+        {
+          "name": "acoustic: ridge alpha=1",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 1.0
+          },
+          "top1": 0.29197994987468673,
+          "top3": 0.6654135338345865,
+          "selection_score": 0.62468671679198
+        },
+        {
+          "name": "acoustic: ridge alpha=10",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 10.0
+          },
+          "top1": 0.2832080200501253,
+          "top3": 0.6654135338345865,
+          "selection_score": 0.6159147869674185
+        },
+        {
+          "name": "acoustic: RBF SVC C=0.1",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 0.1,
+            "gamma": "scale"
+          },
+          "top1": 0.23934837092731828,
+          "top3": 0.5626566416040101,
+          "selection_score": 0.5206766917293233
+        },
+        {
+          "name": "acoustic: RBF SVC C=1",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 1.0,
+            "gamma": "scale"
+          },
+          "top1": 0.2957393483709273,
+          "top3": 0.6453634085213033,
+          "selection_score": 0.618421052631579
+        },
+        {
+          "name": "acoustic: RBF SVC C=10",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 10.0,
+            "gamma": "scale"
+          },
+          "top1": 0.2756892230576441,
+          "top3": 0.6516290726817042,
+          "selection_score": 0.6015037593984962
+        },
+        {
+          "name": "acoustic: RBF SVC C=100",
+          "feature_recipe": "acoustic",
+          "feature_family": "acoustic",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 100.0,
+            "gamma": "scale"
+          },
+          "top1": 0.2769423558897243,
+          "top3": 0.6491228070175439,
+          "selection_score": 0.6015037593984962
+        },
+        {
+          "name": "mert_middle: ridge alpha=0.01",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.01
+          },
+          "top1": 0.3383458646616541,
+          "top3": 0.6842105263157895,
+          "selection_score": 0.6804511278195489
+        },
+        {
+          "name": "mert_middle: ridge alpha=0.1",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.1
+          },
+          "top1": 0.3583959899749373,
+          "top3": 0.7142857142857143,
+          "selection_score": 0.7155388471177945
+        },
+        {
+          "name": "mert_middle: ridge alpha=1",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 1.0
+          },
+          "top1": 0.37343358395989973,
+          "top3": 0.7368421052631579,
+          "selection_score": 0.7418546365914787
+        },
+        {
+          "name": "mert_middle: ridge alpha=10",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 10.0
+          },
+          "top1": 0.3383458646616541,
+          "top3": 0.7180451127819549,
+          "selection_score": 0.6973684210526316
+        },
+        {
+          "name": "mert_middle: RBF SVC C=0.1",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 0.1,
+            "gamma": "scale"
+          },
+          "top1": 0.24812030075187969,
+          "top3": 0.5576441102756893,
+          "selection_score": 0.5269423558897244
+        },
+        {
+          "name": "mert_middle: RBF SVC C=1",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 1.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3433583959899749,
+          "top3": 0.7180451127819549,
+          "selection_score": 0.7023809523809523
+        },
+        {
+          "name": "mert_middle: RBF SVC C=10",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 10.0,
+            "gamma": "scale"
+          },
+          "top1": 0.34210526315789475,
+          "top3": 0.731829573934837,
+          "selection_score": 0.7080200501253133
+        },
+        {
+          "name": "mert_middle: RBF SVC C=100",
+          "feature_recipe": "mert_middle",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 100.0,
+            "gamma": "scale"
+          },
+          "top1": 0.34210526315789475,
+          "top3": 0.731829573934837,
+          "selection_score": 0.7080200501253133
+        },
+        {
+          "name": "mert_late: ridge alpha=0.01",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.01
+          },
+          "top1": 0.24436090225563908,
+          "top3": 0.6516290726817042,
+          "selection_score": 0.5701754385964912
+        },
+        {
+          "name": "mert_late: ridge alpha=0.1",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.1
+          },
+          "top1": 0.2593984962406015,
+          "top3": 0.6791979949874687,
+          "selection_score": 0.5989974937343359
+        },
+        {
+          "name": "mert_late: ridge alpha=1",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 1.0
+          },
+          "top1": 0.3032581453634085,
+          "top3": 0.6867167919799498,
+          "selection_score": 0.6466165413533834
+        },
+        {
+          "name": "mert_late: ridge alpha=10",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 10.0
+          },
+          "top1": 0.30200501253132833,
+          "top3": 0.6704260651629073,
+          "selection_score": 0.637218045112782
+        },
+        {
+          "name": "mert_late: RBF SVC C=0.1",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 0.1,
+            "gamma": "scale"
+          },
+          "top1": 0.2744360902255639,
+          "top3": 0.5601503759398496,
+          "selection_score": 0.5545112781954887
+        },
+        {
+          "name": "mert_late: RBF SVC C=1",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 1.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3132832080200501,
+          "top3": 0.681704260651629,
+          "selection_score": 0.6541353383458646
+        },
+        {
+          "name": "mert_late: RBF SVC C=10",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 10.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3208020050125313,
+          "top3": 0.7005012531328321,
+          "selection_score": 0.6710526315789473
+        },
+        {
+          "name": "mert_late: RBF SVC C=100",
+          "feature_recipe": "mert_late",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 100.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3208020050125313,
+          "top3": 0.7005012531328321,
+          "selection_score": 0.6710526315789473
+        },
+        {
+          "name": "mert_all: ridge alpha=0.01",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.01
+          },
+          "top1": 0.2894736842105263,
+          "top3": 0.6441102756892231,
+          "selection_score": 0.6115288220551378
+        },
+        {
+          "name": "mert_all: ridge alpha=0.1",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.1
+          },
+          "top1": 0.3107769423558897,
+          "top3": 0.681704260651629,
+          "selection_score": 0.6516290726817042
+        },
+        {
+          "name": "mert_all: ridge alpha=1",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 1.0
+          },
+          "top1": 0.3333333333333333,
+          "top3": 0.7042606516290727,
+          "selection_score": 0.6854636591478697
+        },
+        {
+          "name": "mert_all: ridge alpha=10",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 10.0
+          },
+          "top1": 0.32205513784461154,
+          "top3": 0.7030075187969925,
+          "selection_score": 0.6735588972431078
+        },
+        {
+          "name": "mert_all: RBF SVC C=0.1",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 0.1,
+            "gamma": "scale"
+          },
+          "top1": 0.2543859649122807,
+          "top3": 0.556390977443609,
+          "selection_score": 0.5325814536340852
+        },
+        {
+          "name": "mert_all: RBF SVC C=1",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 1.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3107769423558897,
+          "top3": 0.7005012531328321,
+          "selection_score": 0.6610275689223057
+        },
+        {
+          "name": "mert_all: RBF SVC C=10",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 10.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3208020050125313,
+          "top3": 0.7055137844611529,
+          "selection_score": 0.6735588972431077
+        },
+        {
+          "name": "mert_all: RBF SVC C=100",
+          "feature_recipe": "mert_all",
+          "feature_family": "mert",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 100.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3208020050125313,
+          "top3": 0.7055137844611529,
+          "selection_score": 0.6735588972431077
+        },
+        {
+          "name": "hybrid: ridge alpha=0.01",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.01
+          },
+          "top1": 0.32706766917293234,
+          "top3": 0.7055137844611529,
+          "selection_score": 0.6798245614035088
+        },
+        {
+          "name": "hybrid: ridge alpha=0.1",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 0.1
+          },
+          "top1": 0.34711779448621555,
+          "top3": 0.7243107769423559,
+          "selection_score": 0.7092731829573935
+        },
+        {
+          "name": "hybrid: ridge alpha=1",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 1.0
+          },
+          "top1": 0.35964912280701755,
+          "top3": 0.7192982456140351,
+          "selection_score": 0.7192982456140351
+        },
+        {
+          "name": "hybrid: ridge alpha=10",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "ridge",
+          "parameters": {
+            "alpha": 10.0
+          },
+          "top1": 0.3358395989974937,
+          "top3": 0.6929824561403509,
+          "selection_score": 0.6823308270676691
+        },
+        {
+          "name": "hybrid: RBF SVC C=0.1",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 0.1,
+            "gamma": "scale"
+          },
+          "top1": 0.24686716791979949,
+          "top3": 0.5651629072681704,
+          "selection_score": 0.5294486215538847
+        },
+        {
+          "name": "hybrid: RBF SVC C=1",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 1.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3308270676691729,
+          "top3": 0.7030075187969925,
+          "selection_score": 0.6823308270676691
+        },
+        {
+          "name": "hybrid: RBF SVC C=10",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 10.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3308270676691729,
+          "top3": 0.7205513784461153,
+          "selection_score": 0.6911027568922306
+        },
+        {
+          "name": "hybrid: RBF SVC C=100",
+          "feature_recipe": "hybrid",
+          "feature_family": "hybrid",
+          "classifier": "rbf_svc",
+          "parameters": {
+            "C": 100.0,
+            "gamma": "scale"
+          },
+          "top1": 0.3308270676691729,
+          "top3": 0.7205513784461153,
+          "selection_score": 0.6911027568922306
+        }
+      ],
+      "validation": {
+        "top1": 0.4117647058823529,
+        "top3": 0.7549019607843137,
+        "n_samples": 102,
+        "confusion_matrix": [
+          [
+            5,
+            5,
+            1,
+            1,
+            2,
+            3
+          ],
+          [
+            5,
+            7,
+            0,
+            2,
+            1,
+            2
+          ],
+          [
+            0,
+            0,
+            12,
+            1,
+            1,
+            3
+          ],
+          [
+            0,
+            5,
+            5,
+            4,
+            1,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            1,
+            7,
+            3
+          ],
+          [
+            4,
+            4,
+            1,
+            0,
+            1,
+            7
+          ]
+        ],
+        "confusion_matrix_kind": "counts",
+        "total_errors": 60,
+        "largest_confusions": [
+          {
+            "true": "US",
+            "predicted": "UK",
+            "count": 5
+          },
+          {
+            "true": "UK",
+            "predicted": "US",
+            "count": 5
+          },
+          {
+            "true": "Spain",
+            "predicted": "UK",
+            "count": 5
+          },
+          {
+            "true": "Spain",
+            "predicted": "Brazil",
+            "count": 5
+          },
+          {
+            "true": "Italy",
+            "predicted": "US",
+            "count": 4
+          },
+          {
+            "true": "Italy",
+            "predicted": "UK",
+            "count": 4
+          },
+          {
+            "true": "US",
+            "predicted": "Italy",
+            "count": 3
+          },
+          {
+            "true": "Brazil",
+            "predicted": "Italy",
+            "count": 3
+          }
+        ],
+        "per_class_accuracy": {
+          "US": 0.29411764705882354,
+          "UK": 0.4117647058823529,
+          "Brazil": 0.7058823529411765,
+          "Spain": 0.23529411764705882,
+          "Germany": 0.4117647058823529,
+          "Italy": 0.4117647058823529
+        }
+      },
+      "comparisons": {
+        "acoustic": {
+          "selected": {
+            "name": "acoustic: ridge alpha=1",
+            "feature_recipe": "acoustic",
+            "feature_family": "acoustic",
+            "classifier": "ridge",
+            "parameters": {
+              "alpha": 1.0
+            },
+            "top1": 0.29197994987468673,
+            "top3": 0.6654135338345865,
+            "selection_score": 0.62468671679198,
+            "cv_top1": 0.29197994987468673,
+            "cv_top3": 0.6654135338345865,
+            "description": "244 acoustic statistics: full-excerpt mean and standard deviation."
+          },
+          "validation": {
+            "top1": 0.22549019607843138,
+            "top3": 0.6372549019607843,
+            "n_samples": 102,
+            "confusion_matrix": [
+              [
+                2,
+                4,
+                3,
+                1,
+                4,
+                3
+              ],
+              [
+                4,
+                7,
+                1,
+                1,
+                2,
+                2
+              ],
+              [
+                1,
+                1,
+                7,
+                2,
+                2,
+                4
+              ],
+              [
+                6,
+                5,
+                2,
+                0,
+                4,
+                0
+              ],
+              [
+                4,
+                2,
+                1,
+                3,
+                3,
+                4
+              ],
+              [
+                5,
+                1,
+                2,
+                2,
+                3,
+                4
+              ]
+            ],
+            "confusion_matrix_kind": "counts",
+            "total_errors": 79,
+            "largest_confusions": [
+              {
+                "true": "Spain",
+                "predicted": "US",
+                "count": 6
+              },
+              {
+                "true": "Spain",
+                "predicted": "UK",
+                "count": 5
+              },
+              {
+                "true": "Italy",
+                "predicted": "US",
+                "count": 5
+              },
+              {
+                "true": "US",
+                "predicted": "UK",
+                "count": 4
+              },
+              {
+                "true": "US",
+                "predicted": "Germany",
+                "count": 4
+              },
+              {
+                "true": "UK",
+                "predicted": "US",
+                "count": 4
+              },
+              {
+                "true": "Brazil",
+                "predicted": "Italy",
+                "count": 4
+              },
+              {
+                "true": "Spain",
+                "predicted": "Germany",
+                "count": 4
+              }
+            ],
+            "per_class_accuracy": {
+              "US": 0.11764705882352941,
+              "UK": 0.4117647058823529,
+              "Brazil": 0.4117647058823529,
+              "Spain": 0.0,
+              "Germany": 0.17647058823529413,
+              "Italy": 0.23529411764705882
+            }
+          }
+        },
+        "mert": {
+          "selected": {
+            "name": "mert_middle: ridge alpha=1",
+            "feature_recipe": "mert_middle",
+            "feature_family": "mert",
+            "classifier": "ridge",
+            "parameters": {
+              "alpha": 1.0
+            },
+            "top1": 0.37343358395989973,
+            "top3": 0.7368421052631579,
+            "selection_score": 0.7418546365914787,
+            "cv_top1": 0.37343358395989973,
+            "cv_top3": 0.7368421052631579,
+            "description": "Mean of MERT layers 5-8; 768 frame means and 768 frame standard deviations."
+          },
+          "validation": {
+            "top1": 0.4117647058823529,
+            "top3": 0.7549019607843137,
+            "n_samples": 102,
+            "confusion_matrix": [
+              [
+                5,
+                5,
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                5,
+                7,
+                0,
+                2,
+                1,
+                2
+              ],
+              [
+                0,
+                0,
+                12,
+                1,
+                1,
+                3
+              ],
+              [
+                0,
+                5,
+                5,
+                4,
+                1,
+                2
+              ],
+              [
+                2,
+                2,
+                2,
+                1,
+                7,
+                3
+              ],
+              [
+                4,
+                4,
+                1,
+                0,
+                1,
+                7
+              ]
+            ],
+            "confusion_matrix_kind": "counts",
+            "total_errors": 60,
+            "largest_confusions": [
+              {
+                "true": "US",
+                "predicted": "UK",
+                "count": 5
+              },
+              {
+                "true": "UK",
+                "predicted": "US",
+                "count": 5
+              },
+              {
+                "true": "Spain",
+                "predicted": "UK",
+                "count": 5
+              },
+              {
+                "true": "Spain",
+                "predicted": "Brazil",
+                "count": 5
+              },
+              {
+                "true": "Italy",
+                "predicted": "US",
+                "count": 4
+              },
+              {
+                "true": "Italy",
+                "predicted": "UK",
+                "count": 4
+              },
+              {
+                "true": "US",
+                "predicted": "Italy",
+                "count": 3
+              },
+              {
+                "true": "Brazil",
+                "predicted": "Italy",
+                "count": 3
+              }
+            ],
+            "per_class_accuracy": {
+              "US": 0.29411764705882354,
+              "UK": 0.4117647058823529,
+              "Brazil": 0.7058823529411765,
+              "Spain": 0.23529411764705882,
+              "Germany": 0.4117647058823529,
+              "Italy": 0.4117647058823529
+            }
+          }
+        }
+      },
+      "train_samples": 798,
+      "test_samples": 102,
+      "training_seconds": 47.94
+    }
+  }
+}

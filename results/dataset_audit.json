@@ -1,0 +1,60 @@
+{
+  "dataset_A": {
+    "n_samples": 1290,
+    "splits": {
+      "test": 132,
+      "train": 1026,
+      "validation": 132
+    },
+    "class_counts": {
+      "train": {
+        "2010s": 171,
+        "1970s": 171,
+        "2000s": 171,
+        "1980s": 171,
+        "1990s": 171,
+        "1960s": 171
+      },
+      "validation": {
+        "1960s": 22,
+        "1970s": 22,
+        "1980s": 22,
+        "2000s": 22,
+        "2010s": 22,
+        "1990s": 22
+      }
+    },
+    "all_sha256_match": true,
+    "all_audio_format_checks_passed": true,
+    "manifest_sha256": "620a94cb3f974d377420fbe0b1f9068358206b67fe3ccd2d77bd96117fd1de60"
+  },
+  "dataset_B": {
+    "n_samples": 1002,
+    "splits": {
+      "test": 102,
+      "train": 798,
+      "validation": 102
+    },
+    "class_counts": {
+      "train": {
+        "Italy": 133,
+        "US": 133,
+        "Spain": 133,
+        "Brazil": 133,
+        "UK": 133,
+        "Germany": 133
+      },
+      "validation": {
+        "Germany": 17,
+        "UK": 17,
+        "Italy": 17,
+        "Spain": 17,
+        "US": 17,
+        "Brazil": 17
+      }
+    },
+    "all_sha256_match": true,
+    "all_audio_format_checks_passed": true,
+    "manifest_sha256": "4531d4b4d0ac16268ee118a203bed0d99c46ed3e0f052f842d859382e731b76d"
+  }
+}

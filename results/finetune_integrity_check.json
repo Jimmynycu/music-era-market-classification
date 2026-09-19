@@ -1,0 +1,118 @@
+{
+  "verified_at": "2026-09-19T13:19:01.723238+00:00",
+  "method": "Independent CPU tensor/manifest checks against the original local pinned base; no model inference",
+  "gpu_used": false,
+  "new_audio_inference_calls": 0,
+  "base_model": "m-a-p/MERT-v1-95M",
+  "base_revision": "12af15fef9d0ac838c3f475bfbbf26d2060dd4f5",
+  "base_weights_sha256": "a2b8b747f72c06e0595aeae41ae5473f4364938c6b39b2c58be38c48e6bd3fcd",
+  "frozen_base_sha256": "4643ccbc393487ed3b99bf1f06e83c1cb1da7c955d3076baf59a1f21c834328d",
+  "metrics_sha256": "f759f3a76f2c5b2539b28df9da299f2201eae549b6b9aaea3ad7cf55f752837f",
+  "predictions_sha256": "41f8500695b1ebb3667c51ac6d914465062e16402f47be2f8f2ec57b7449554c",
+  "datasets": {
+    "dataset_A": {
+      "checkpoint_sha256": "14f3a04baff04cf2451b9015e0dfe99af6dbca42ddde65ba2a83c4038d9c3360",
+      "backbone_tensor_count": 64,
+      "backbone_parameter_count": 28351488,
+      "head_tensor_count": 4,
+      "all_saved_tensors_finite_fp32": true,
+      "measured_pretrained_weight_changes": {
+        "8": {
+          "changed_elements": 7087837,
+          "delta_l2": 0.8649015242707716,
+          "max_abs_delta": 0.0023835524916648865
+        },
+        "9": {
+          "changed_elements": 7087824,
+          "delta_l2": 0.7773048711463051,
+          "max_abs_delta": 0.0022764503955841064
+        },
+        "10": {
+          "changed_elements": 7087831,
+          "delta_l2": 0.7088170188947178,
+          "max_abs_delta": 0.0023821890354156494
+        },
+        "11": {
+          "changed_elements": 7087828,
+          "delta_l2": 0.6780963266190291,
+          "max_abs_delta": 0.002610625699162483
+        }
+      },
+      "reported_weight_deltas_match_checkpoint": true,
+      "frozen_base_matches_original": true,
+      "internal_fit_samples": 820,
+      "internal_holdout_samples": 206,
+      "internal_holdout_class_counts": {
+        "2000s": 34,
+        "1990s": 34,
+        "1960s": 34,
+        "1980s": 35,
+        "2010s": 34,
+        "1970s": 35
+      },
+      "internal_split_disjoint_and_covers_only_official_train": true,
+      "selected_epochs": 6,
+      "selection_and_final_epochs_verified": true,
+      "finite_nonzero_gradients_reported_for_every_trainable_block": true,
+      "official_validation_samples": 132,
+      "validation_top1_correct": 52,
+      "validation_top3_correct": 105,
+      "validation_metrics_independently_recomputed": true,
+      "official_test_samples": 132,
+      "test_ids_and_top3_rankings_valid": true,
+      "validation_predictions_sha256": "9a59456359703d9cda4d6d520ed9cd8cc25bfa6ee7641157114ceff12e5274a0"
+    },
+    "dataset_B": {
+      "checkpoint_sha256": "752e05133a1a2cbaaefa2ee266db314bc09ca386c3ad811e6726583bc3f3bcaa",
+      "backbone_tensor_count": 64,
+      "backbone_parameter_count": 28351488,
+      "head_tensor_count": 4,
+      "all_saved_tensors_finite_fp32": true,
+      "measured_pretrained_weight_changes": {
+        "8": {
+          "changed_elements": 7087798,
+          "delta_l2": 0.43112925144682873,
+          "max_abs_delta": 0.0010003000497817993
+        },
+        "9": {
+          "changed_elements": 7087778,
+          "delta_l2": 0.3748487304745663,
+          "max_abs_delta": 0.0008675437420606613
+        },
+        "10": {
+          "changed_elements": 7087781,
+          "delta_l2": 0.3378846534189014,
+          "max_abs_delta": 0.0008212924003601074
+        },
+        "11": {
+          "changed_elements": 7087794,
+          "delta_l2": 0.3175883150306153,
+          "max_abs_delta": 0.0008108881302177906
+        }
+      },
+      "reported_weight_deltas_match_checkpoint": true,
+      "frozen_base_matches_original": true,
+      "internal_fit_samples": 638,
+      "internal_holdout_samples": 160,
+      "internal_holdout_class_counts": {
+        "Brazil": 27,
+        "US": 27,
+        "Germany": 27,
+        "UK": 26,
+        "Spain": 26,
+        "Italy": 27
+      },
+      "internal_split_disjoint_and_covers_only_official_train": true,
+      "selected_epochs": 3,
+      "selection_and_final_epochs_verified": true,
+      "finite_nonzero_gradients_reported_for_every_trainable_block": true,
+      "official_validation_samples": 102,
+      "validation_top1_correct": 27,
+      "validation_top3_correct": 55,
+      "validation_metrics_independently_recomputed": true,
+      "official_test_samples": 102,
+      "test_ids_and_top3_rankings_valid": true,
+      "validation_predictions_sha256": "5d78e7ad523c93eba1ff3eecb00e212c4764081ed6c3aa65eaaa8c712e280a32"
+    }
+  }
+}

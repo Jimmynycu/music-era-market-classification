@@ -1,0 +1,53 @@
+{
+  "compute_scope": "Only the current local CPU and GPU; no cloud training or remote inference.",
+  "system": "Linux-7.0.0-31-generic-x86_64-with-glibc2.39",
+  "python": "3.12.14",
+  "cpu": "Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz",
+  "gpu": "NVIDIA GeForce GTX 1060 6GB",
+  "gpu_compute_capability": [
+    6,
+    1
+  ],
+  "driver": "580.173.02",
+  "torch_cuda_runtime": "12.4",
+  "versions": {
+    "numpy": "1.26.4",
+    "scipy": "1.14.1",
+    "scikit-learn": "1.5.2",
+    "joblib": "1.6.0",
+    "soundfile": "0.12.1",
+    "librosa": "0.10.2.post1",
+    "torch": "2.6.0+cu124",
+    "transformers": "4.44.2",
+    "huggingface-hub": "0.36.2",
+    "matplotlib": "3.9.2",
+    "reportlab": "4.2.5"
+  },
+  "mert_revision": "12af15fef9d0ac838c3f475bfbbf26d2060dd4f5",
+  "qwen_gguf_revision": "75f1b73b657a50f5092502799457ccb4a4a1f9df",
+  "llama_cpp_version": "b11049 (efa28e950)",
+  "supervised_seed": 2026,
+  "alm_decoding_seed": 42,
+  "supervised_blas_threads": 1,
+  "numerical_library_note": "SciPy bundled OpenBLAS Haswell float32 Cholesky crashed with four threads; identical actual-data fitting passed with one and two threads. All final classifier fits used one thread.",
+  "frozen_supervised_precision": "FP32 encoder; FP64 frame-statistic accumulation; FP32 saved features",
+  "fine_tuning": {
+    "precision": "FP32 forward, backward, AdamW, and saved weights",
+    "device": "cuda:0; local NVIDIA GTX 1060 6GB",
+    "trainable_pretrained_parameters_per_task": 28351488,
+    "trainable_blocks_zero_based": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "micro_batch_size": 4,
+    "effective_batch_size": 16,
+    "selected_epochs": {
+      "dataset_A": 6,
+      "dataset_B": 3
+    },
+    "selection_scope": "20% internal holdout within official TRAIN only; fresh all-TRAIN refit",
+    "cloud_training_or_remote_inference": false
+  }
+}

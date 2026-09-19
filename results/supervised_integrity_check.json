@@ -1,0 +1,155 @@
+{
+  "checked_at_utc": "2026-09-19T11:48:38.977256+00:00",
+  "status": "passed",
+  "scope": "Saved-checkpoint consistency using existing cached features; no model fitting or fresh audio inference was performed in this audit.",
+  "completed_checks": [
+    "Prediction JSON contains exactly dataset_A and dataset_B, with every test sample once and three distinct allowed label strings per sample.",
+    "Each selected candidate maximizes training-CV Top-1 + 0.5 * Top-3, breaking ties by Top-1 and fixed candidate order, across all 40 candidates.",
+    "Checkpoint dataset, canonical class labels, estimator class set, feature recipe, and training sample count match the saved metrics and manifests.",
+    "Reloaded checkpoints reproduce every saved validation ranking from cached features and exactly recompute all saved validation metrics and confusion matrices.",
+    "Reloaded checkpoints reproduce every submitted test ranking from cached features.",
+    "Acoustic and MERT comparison choices maximize their family training-CV criterion; their confusion matrix supports and Top-1 values agree with validation manifests."
+  ],
+  "fresh_wav_reproduction": {
+    "performed_by_this_audit": false,
+    "result_file": "results/reproduction_check.json",
+    "note": "A separate full fresh-WAV inference and exact prediction comparison is queued by the parent workflow. This audit does not establish waveform-level or cross-device reproduction."
+  },
+  "datasets": {
+    "dataset_A": {
+      "train_samples": 1026,
+      "validation_samples": 132,
+      "test_samples": 132,
+      "classes": [
+        "1960s",
+        "1970s",
+        "1980s",
+        "1990s",
+        "2000s",
+        "2010s"
+      ],
+      "cv_candidates": 40,
+      "selected_name": "hybrid: ridge alpha=1",
+      "selected_recipe": "hybrid",
+      "feature_dimensions": 4852,
+      "cv_top1": 0.4171539961013645,
+      "cv_top3": 0.7914230019493177,
+      "validation_top1": 0.4015151515151515,
+      "validation_top3": 0.8333333333333334,
+      "validation_correct_top1": 53,
+      "validation_errors": 79,
+      "cached_validation_rankings_and_metrics_exact_match": true,
+      "cached_test_predictions_exact_match": true,
+      "largest_two_way_confusions": [
+        {
+          "labels": [
+            "2000s",
+            "2010s"
+          ],
+          "errors": 15
+        },
+        {
+          "labels": [
+            "1960s",
+            "1970s"
+          ],
+          "errors": 10
+        },
+        {
+          "labels": [
+            "1980s",
+            "1990s"
+          ],
+          "errors": 10
+        }
+      ],
+      "per_class_recall": {
+        "1960s": 0.7727272727272727,
+        "1970s": 0.36363636363636365,
+        "1980s": 0.5,
+        "1990s": 0.22727272727272727,
+        "2000s": 0.18181818181818182,
+        "2010s": 0.36363636363636365
+      },
+      "decade_errors": {
+        "adjacent": 47,
+        "all_errors": 79,
+        "adjacent_fraction": 0.5949367088607594,
+        "distance_steps": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "distance_counts": [
+          47,
+          15,
+          7,
+          7,
+          3
+        ],
+        "interpretation": "Most Top-1 errors (47 of 79, 59.49%) are between adjacent decades; this is an observed confusion pattern, not a causal attribution."
+      },
+      "comparison_note": "Selected hybrid validation Top-1/Top-3 is 40.15%/83.33%; MERT-only is 41.67%/79.55%. Selection was based on training CV, not these validation results."
+    },
+    "dataset_B": {
+      "train_samples": 798,
+      "validation_samples": 102,
+      "test_samples": 102,
+      "classes": [
+        "US",
+        "UK",
+        "Brazil",
+        "Spain",
+        "Germany",
+        "Italy"
+      ],
+      "cv_candidates": 40,
+      "selected_name": "mert_middle: ridge alpha=1",
+      "selected_recipe": "mert_middle",
+      "feature_dimensions": 1536,
+      "cv_top1": 0.37343358395989973,
+      "cv_top3": 0.7368421052631579,
+      "validation_top1": 0.4117647058823529,
+      "validation_top3": 0.7549019607843137,
+      "validation_correct_top1": 42,
+      "validation_errors": 60,
+      "cached_validation_rankings_and_metrics_exact_match": true,
+      "cached_test_predictions_exact_match": true,
+      "largest_two_way_confusions": [
+        {
+          "labels": [
+            "US",
+            "UK"
+          ],
+          "errors": 10
+        },
+        {
+          "labels": [
+            "UK",
+            "Spain"
+          ],
+          "errors": 7
+        },
+        {
+          "labels": [
+            "US",
+            "Italy"
+          ],
+          "errors": 7
+        }
+      ],
+      "per_class_recall": {
+        "US": 0.29411764705882354,
+        "UK": 0.4117647058823529,
+        "Brazil": 0.7058823529411765,
+        "Spain": 0.23529411764705882,
+        "Germany": 0.4117647058823529,
+        "Italy": 0.4117647058823529
+      },
+      "market_error_note": "US/UK contributes 10 of 60 Top-1 errors (16.67%), the largest pair but not a majority. US/Italy and UK/Spain each contribute 7. Brazil recall is 12/17; Spain recall is 4/17.",
+      "comparison_note": "The selected model and the MERT-only comparator are the same training-CV-selected candidate."
+    }
+  }
+}
