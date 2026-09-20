@@ -1,7 +1,8 @@
 """Evaluate frozen Qwen2.5-Omni through a LOCAL llama.cpp audio server.
 
 No fitting, transcript, title, artist, or label is supplied to the model.
-Run `python alm_eval.py --self-check` for the parser/metrics check.
+New inference runs require an empty output directory; interrupted runs are not resumed.
+Use --score-only to check saved outputs without running or attesting a model.
 """
 import argparse
 import base64
@@ -63,6 +64,83 @@ def metrics(rows, classes):
     }
 
 
+def selected_items(args, dataset):
+    with (args.data_dir / dataset / 'manifest.csv').open(newline='') as stream:
+        selected = sorted((row for row in csv.DictReader(stream) if row['split'] == args.split),
+                          key=lambda row: row['sample_id'])
+    if args.limit is not None:
+        selected = selected[:args.limit]
+    if not selected or len({row['sample_id'] for row in selected}) != len(selected):
+        raise ValueError('Empty split or duplicate sample IDs.')
+    return selected
+
+
+def summarize(rows, dataset, split):
+    return {
+        'classes': CLASSES[dataset],
+        'invalid_outputs': sum(not attempt['valid'] for row in rows for attempt in row['attempts']),
+        'fallback_samples': sum(row['fallback'] for row in rows),
+        'elapsed_seconds': sum(row['elapsed_seconds'] for row in rows),
+        split: metrics(rows, CLASSES[dataset]),
+    }
+
+
+def require_empty_output(path):
+    if path.exists() and (not path.is_dir() or any(path.iterdir())):
+        raise ValueError('New ALM inference requires an empty --output-dir. Existing logs cannot '
+                         'be resumed because their model/audio identity is not attested. '
+                         'Use --score-only to check saved results, or choose a new directory.')
+
+
+def score_saved(args):
+    """Recompute complete saved results; no network, audio reads, or file writes."""
+    log = args.output_dir / 'alm_predictions.jsonl'
+    saved = {}
+    for line in log.read_text().splitlines():
+        row = json.loads(line)
+        key = (row['dataset'], row['sample_id'])
+        if key in saved or row['dataset'] not in CLASSES:
+            raise ValueError(f'Duplicate or unknown saved sample: {key}')
+        saved[key] = row
+    result = {'mode': 'score_only', 'model_execution_performed': False,
+              'model_and_audio_identity_attested': False, 'datasets': {}}
+    previous_path = args.output_dir / 'alm_metrics.json'
+    previous = json.loads(previous_path.read_text()) if previous_path.exists() else None
+    for dataset in (CLASSES if args.dataset == 'both' else [args.dataset]):
+        selected = selected_items(args, dataset)
+        expected = {row['sample_id'] for row in selected}
+        if {sample for ds, sample in saved if ds == dataset} != expected:
+            raise ValueError(f'{dataset}: saved log does not exactly cover the requested split.')
+        rows = []
+        for item in selected:
+            row = saved[(dataset, item['sample_id'])]
+            if row['split'] != args.split or row['label'] != item['label'] or row['label'] not in CLASSES[dataset]:
+                raise ValueError(f'Saved split or label differs: {item["sample_id"]}')
+            attempts = row['attempts']
+            if not 1 <= len(attempts) <= 2:
+                raise ValueError('Expected one or two recorded attempts.')
+            for index, attempt in enumerate(attempts):
+                try:
+                    parsed = parse_ranking(attempt['raw'], dataset)
+                except ValueError:
+                    parsed = None
+                if attempt['valid'] != (parsed is not None) or (parsed is not None and index != len(attempts) - 1):
+                    raise ValueError('Saved validity disagrees with the raw output.')
+            fallback = parsed is None
+            ranking = CLASSES[dataset][:] if fallback else parsed
+            if (row['fallback'] != fallback or (fallback and len(attempts) != 2)
+                    or row['ranking'] != ranking or row['top3'] != ranking[:3]
+                    or row['scores'] != {label: 6 - i for i, label in enumerate(ranking)}):
+                raise ValueError(f'Saved ranking disagrees with raw parsing: {item["sample_id"]}')
+            rows.append(row)
+        summary = summarize(rows, dataset, args.split)
+        if previous is not None and previous['datasets'].get(dataset) != summary:
+            raise ValueError(f'{dataset}: recomputed results differ from alm_metrics.json.')
+        result['datasets'][dataset] = summary
+    result['matches_saved_metrics'] = True if previous is not None else None
+    return result
+
+
 def request_ranking(path, dataset, endpoint):
     payload = {
         'model': 'qwen2.5-omni-3b',
@@ -115,6 +193,7 @@ def main():
     ap.add_argument('--split', choices=['train', 'validation'], default='validation')
     ap.add_argument('--dataset', choices=list(CLASSES) + ['both'], default='both')
     ap.add_argument('--limit', type=int, help='Benchmark only; use a separate --output-dir.')
+    ap.add_argument('--score-only', action='store_true', help='Check complete saved logs offline; never run the model or alter historical records.')
     ap.add_argument('--self-check', action='store_true')
     args = ap.parse_args()
     if args.self_check:
@@ -131,47 +210,31 @@ def main():
         assert m['top1'] == 0 and m['top3'] == 1 and m['confusion_matrix'][1][0] == 1
         print('ALM parser and metric self-check passed.')
         return
+    if args.limit is not None and args.limit < 1:
+        ap.error('--limit must be positive.')
+    if args.score_only:
+        print(json.dumps(score_saved(args), indent=2, ensure_ascii=False))
+        return
     server = urllib.parse.urlsplit(args.endpoint)
     if server.scheme != 'http' or server.hostname not in {'127.0.0.1', 'localhost'} or server.username or server.password:
         ap.error('Only a local inference endpoint is allowed.')
-    if args.limit is not None and args.limit < 1:
-        ap.error('--limit must be positive.')
     if args.limit is not None and args.output_dir == Path('results'):
         ap.error('Benchmarks need a separate --output-dir to preserve full results.')
+    require_empty_output(args.output_dir)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     log = args.output_dir / 'alm_predictions.jsonl'
-    done = {}
-    if log.exists():
-        for line in log.read_text().splitlines():
-            row = json.loads(line)
-            key = (row['dataset'], row['sample_id'])
-            if key in done:
-                raise ValueError(f'Duplicate saved prediction: {key}')
-            done[key] = row
     result = {'metadata': metadata(), 'split': args.split, 'datasets': {}}
     result['metadata']['compute_device'] = args.compute_device
     signal.signal(signal.SIGTERM, request_stop)
-    with log.open('a') as out:
+    with log.open('x') as out:
         for dataset in (CLASSES if args.dataset == 'both' else [args.dataset]):
-            with (args.data_dir / dataset / 'manifest.csv').open(newline='') as f:
-                selected = sorted((r for r in csv.DictReader(f) if r['split'] == args.split), key=lambda r: r['sample_id'])
-            if args.limit is not None:
-                selected = selected[:args.limit]
-            if not selected or len({r['sample_id'] for r in selected}) != len(selected):
-                raise ValueError('Empty split or duplicate sample IDs.')
+            selected = selected_items(args, dataset)
             run_rows = []
             prompt_hash = hashlib.sha256((SYSTEM + prompt(dataset)).encode()).hexdigest()
             for number, item in enumerate(selected, 1):
                 if STOP_REQUESTED:
-                    print('Paused after saving the last complete sample; rerun to resume.', flush=True)
+                    print('Stopped after saving the last complete sample. A new inference run needs a new empty --output-dir.', flush=True)
                     return
-                key = (dataset, item['sample_id'])
-                if key in done:
-                    row = done[key]
-                    if row['prompt_sha256'] != prompt_hash or row['split'] != args.split:
-                        raise ValueError('Saved prediction used a different prompt or split.')
-                    run_rows.append(row)
-                    continue
                 dataset_dir = (args.data_dir / dataset).resolve()
                 audio = (dataset_dir / item['audio_path']).resolve()
                 if not audio.is_relative_to(dataset_dir) or not audio.is_file() or item['label'] not in CLASSES[dataset]:
@@ -200,16 +263,9 @@ def main():
                 out.write(json.dumps(row, ensure_ascii=False) + '\n')
                 out.flush()
                 os.fsync(out.fileno())
-                done[key] = row
                 run_rows.append(row)
                 print(f'{dataset} {number}/{len(selected)} {item["sample_id"]} {ranking[:3]} {row["elapsed_seconds"]:.1f}s', flush=True)
-            result['datasets'][dataset] = {
-                'classes': CLASSES[dataset],
-                'invalid_outputs': sum(not attempt['valid'] for r in run_rows for attempt in r['attempts']),
-                'fallback_samples': sum(r['fallback'] for r in run_rows),
-                'elapsed_seconds': sum(r['elapsed_seconds'] for r in run_rows),
-                args.split: metrics(run_rows, CLASSES[dataset]),
-            }
+            result['datasets'][dataset] = summarize(run_rows, dataset, args.split)
             dest = args.output_dir / 'alm_metrics.json'
             temp = dest.with_suffix('.json.tmp')
             temp.write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\n')
