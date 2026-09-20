@@ -159,14 +159,14 @@ python3 alm_eval.py --data-dir /your/path/data --compute-device 'NVIDIA GeForce 
 sudo apt-get install fonts-droid-fallback fonts-dejavu-core
 pip install -r requirements-report.txt
 python make_report.py --self-check
-python make_report.py --repo-url https://github.com/Jimmynycu/music-era-market-classification --data-dir /your/path/data --output output/pdf/report_zh-TW.pdf
+python make_report.py --student-id D15921B14 --student-name '劉昌昀' --repo-url https://github.com/Jimmynycu/music-era-market-classification --data-dir /your/path/data --output output/pdf/report_zh-TW.pdf
 ```
 
-報告使用倉庫中的結果JSON與課程manifest，不需要音訊或模型cache。上述Ubuntu字型套件提供DroidSansFallbackFull及DejaVu Sans，PDF會嵌入中文字型；執行分類推論不需要這些字型。加入`--student-id YOUR_STUDENT_ID --cloud-url 'https://your-public-cloud-folder-url'`可補齊提交資訊；公開版可先顯示待補欄位。發布的PDF位於[reports/report_zh-TW.pdf](reports/report_zh-TW.pdf)，以此繁體中文版為準，先前英文草稿不是目前報告。
+報告使用倉庫中的結果JSON與課程manifest，不需要音訊或模型cache。上述Ubuntu字型套件提供DroidSansFallbackFull及DejaVu Sans，PDF會嵌入中文字型；執行分類推論不需要這些字型。本報告學號為`D15921B14`、姓名為劉昌昀；重建其他作者版本時可使用`--student-id`與`--student-name`。課程要求的公開雲端資料夾網址尚待提供，取得後加入`--cloud-url 'https://your-public-cloud-folder-url'`即可補齊封面連結。發布的PDF位於[reports/report_zh-TW.pdf](reports/report_zh-TW.pdf)，以此繁體中文版為準，先前英文草稿不是目前報告。
 
 ## 課程提交尚需補齊的資料
 
-公開GitHub倉庫與Release提供程式及權重，但**不自動等同課程指定的公開cloud-drive folder**。正式繳交仍需真實學號、符合課程要求的公開雲端資料夾連結、報告首頁連結，以及`<studentID>_report.pdf`與`<studentID>.json`檔名。還須在NTU COOL上傳報告／預測，並依作業要求於`HW1_report`留言放置雲端連結。
+公開GitHub倉庫與Release提供程式及權重，但**不自動等同課程指定的公開cloud-drive folder**。學號`D15921B14`與姓名劉昌昀已補入報告；正式繳交使用`D15921B14_report.pdf`與`D15921B14.json`。目前仍需符合課程要求的公開雲端資料夾網址，並補入報告首頁。還須在NTU COOL上傳報告／預測，並依作業要求於`HW1_report`留言放置雲端連結。
 
 正式上傳的JSON須與提供的推論方法及checkpoint相符。程式目前預設及先前指定的提交版本是微調，較高驗證成績的凍結JSON則另外保留；公開整理沒有切換或提交檔案。課程資料、模型cache、optimizer續跑暫存與無關checkpoint均不應上傳。
 

@@ -81,7 +81,7 @@ def decade_errors(cm):
 
 
 class Report:
-    def __init__(self, output, student_id, draft=False):
+    def __init__(self, output, student_id, draft=False, student_name=None, draft_label='提交資訊待補'):
         for name, filename in [('Body', 'DejaVuSans.ttf'), ('Bold', 'DejaVuSans-Bold.ttf')]:
             pdfmetrics.registerFont(TTFont(name, str(FONT_DIR / filename)))
         pdfmetrics.registerFont(TTFont('CJK', str(CJK_FONT)))
@@ -89,8 +89,9 @@ class Report:
         self.cjk_glyphs = pdfmetrics.getFont('CJK').face.charToGlyph
         self.canvas = canvas.Canvas(str(output), pagesize=(W, H))
         self.canvas.setTitle('音樂發行年代與市場分類：實驗報告')
-        self.canvas.setAuthor(student_id or '學號待補')
+        self.canvas.setAuthor('／'.join(value for value in (student_name, student_id) if value) or '學號待補')
         self.student_id, self.page, self.draft = student_id, 0, draft
+        self.draft_label = draft_label
 
     def text(self, text, x, y, width, size=14, color=INK, bold=False, leading=None):
         # Droid supplies embedded Chinese outlines; DejaVu supplies Latin/math.
@@ -137,7 +138,7 @@ class Report:
         self.canvas.setFillColor(colors.HexColor(MUTED))
         self.canvas.drawRightString(W-44, 19, f'{self.page:02d} / 10')
         if self.draft:
-            self.text('提交資訊待補',794,23,122,size=9,color=ORANGE)
+            self.text(self.draft_label,794,23,122,size=9,color=ORANGE)
 
     def card(self, x, y, width, title, value, detail, accent=TEAL):
         self.rect(x, y, width, 116)
@@ -274,14 +275,17 @@ def build(args):
     font_manager.fontManager.addfont(str(CJK_FONT))
     plt.rcParams.update({'font.family': ['DejaVu Sans', 'Droid Sans Fallback'],
                          'font.size':11, 'axes.titleweight':'normal', 'axes.unicode_minus':False})
-    r = Report(output, student_id, args.draft or not student_id or not args.cloud_url)
+    draft_label = '課程雲端連結待補' if student_id and not args.cloud_url else '提交資訊待補'
+    r = Report(output, student_id, args.draft or not student_id or not args.cloud_url,
+               student_name=args.student_name, draft_label=draft_label)
     va, vb = bdata['dataset_A']['validation'], bdata['dataset_B']['validation']
 
     # 1. Lead with the better measured frozen-feature systems, without reselecting predictions.
     r.new_page('音樂發行年代與市場分類', '凍結特徵分類器、預訓練模型微調，以及本機音訊語言模型的比較', '作業一　／　繁體中文實驗報告')
     r.text('先看較佳表現：<br/>凍結 MERT 特徵分類器',48,155,520,size=28,bold=True)
     r.text('兩項任務皆以 30 秒音樂片段預測單一類別。凍結方案的官方驗證表現優於本次微調；以下先呈現凍結方案，再分析微調與音訊語言模型的結果及限制。',48,259,505,size=15)
-    r.text('學號：'+esc(student_id or '待補'),48,352,510,size=13,color=MUTED)
+    identity = ('姓名：'+esc(args.student_name)+'　｜　' if args.student_name else '')+'學號：'+esc(student_id or '待補')
+    r.text(identity,48,352,510,size=13,color=MUTED)
     r.card(616,150,298,'凍結 A　發行年代／Top-1',pct(va['top1']),f"Top-3 {pct(va['top3'])}　｜　132 筆驗證資料")
     r.card(616,284,298,'凍結 B　發行市場／Top-1',pct(vb['top1']),f"Top-3 {pct(vb['top3'])}　｜　102 筆驗證資料")
     r.rect(44,424,872,67)
@@ -477,6 +481,7 @@ def self_check():
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--student-id', help='Optional; omitted identity is visibly marked pending')
+    parser.add_argument('--student-name', help='Optional student name for the cover and PDF author metadata')
     parser.add_argument('--repo-url', default='https://github.com/Jimmynycu/music-era-market-classification')
     parser.add_argument('--cloud-url')
     parser.add_argument('--supervised',type=Path,default=ROOT/'results'/'metrics.json')
